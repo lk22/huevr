@@ -6,10 +6,11 @@
     import ReactDOM from 'react-dom';
     import {Provider} from 'react-redux'
     import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
-    // import './css/app.css';
+    import './css/app.css';
     const store = require('./store/storeConfig.jsx').configStoreWith({})
 
     import Main from './components/Main.jsx'
+
 
     ReactDOM.render(
         <Provider store={store}>

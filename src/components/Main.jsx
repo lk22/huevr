@@ -26,7 +26,7 @@ export default class Main extends Component {
 					<Sidebar />
 
 					<div className="col-md-10 col-lg-10 main-content">
-
+						<p>this is the content</p>
 					</div>
 				</div>
 			</div>
