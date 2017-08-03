@@ -11,7 +11,6 @@ const createWindow = () => {
 	})
 
 	window.loadURL('http://localhost:3999')
-
 }
 
 app.on('ready', createWindow)
