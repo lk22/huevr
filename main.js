@@ -4,10 +4,9 @@ const BrowserWindow = electron.BrowserWindow
 
 let window
 
-require('electron-reload')(__dirname {
-	electron: require('electron-prebuilt'),
-	hardResetMethod:'exit'
-})
+// require('electron-reload')(__dirname, {
+//   electron: require('electron-prebuilt')
+// });
 
 const createWindow = () => {
 	window = new BrowserWindow({
