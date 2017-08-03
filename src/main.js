@@ -8,4 +8,11 @@
     import {Route, Router, HashHistory, BrowserHistory} from 'react-router'
     import './css/app.css';
 
+    const store = require('./store/storeConfig.jsx').configStoreWith({})
+
+    ReactDOM.render(
+        <Provider store={store}>
     
+        </Provider>,
+        document.getElementById('app')
+    )
