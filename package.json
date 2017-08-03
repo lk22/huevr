@@ -1,7 +1,7 @@
 {
   "name": "Huevr",
   "version": "1.0.0",
-  "description": "A Home project using Phillips Hue API,
+  "description": "A Home project using Phillips Hue API",
   "author": "Leo Knudsen <lkdevelop2200@gmail.com>",
   "private": true,
   "scripts": {
