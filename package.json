@@ -1,8 +1,8 @@
 {
-  "name": "foliodocs",
+  "name": "Huevr",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Rasmus Wølk <rasmuswoelk@gmail.com>",
+  "description": "A Home project using Phillips Hue API,
+  "author": "Leo Knudsen <lkdevelop2200@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dashboard -c magenta -- node build/dev-server.js --profile --json > stats.json",
