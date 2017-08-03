@@ -4,14 +4,8 @@
 
     import React from 'react';
     import ReactDOM from 'react-dom';
+    import {Provider} from 'react-redux'
+    import {Route, Router, HashHistory, BrowserHistory} from 'react-router'
     import './css/app.css';
 
-    const App = () => {
-        return (
-            <div>
-                Oliver!
-            </div>
-        );
-    };
-
-    ReactDOM.render(<App />, document.getElementById('app'));
+    
