@@ -1,0 +1,1 @@
+webpackJsonp([1],{76:function(e,t){},79:function(e,t,n){"use strict";function u(e){return e&&e.__esModule?e:{default:e}}var l=n(78),r=u(l),a=n(77),c=u(a);n(76);var d=function(){return r.default.createElement("div",null,"Oliver!")};c.default.render(r.default.createElement(d,null),document.getElementById("app"))}},[79]);
