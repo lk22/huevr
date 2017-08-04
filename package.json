@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "bootstrap": "^3.3.7",
     "electron": "^1.6.11",
     "electron-hot-loader": "^0.8.0",
     "electron-prebuilt": "^1.4.13",

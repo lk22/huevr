@@ -9,10 +9,30 @@ import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
 export default class Main extends Component {
 
+	constructor(props) {
+		super(props);
+	}
+
 	// component is mounted 
 	componentDidMount() {
+
 		Axios.get('https://www.meethue.com/api/nupnp').then((bridge) => {
 			console.log(bridge)
+
+
+
+			if(bridge.data.length = 0 ) {
+				return (
+				    <NotFoundComponent/>
+				)
+			}
+
+			this.setState({
+				ip: bridge.data[0].internalipaddress,
+				username: bridge.data[0].username
+			})
+
+			console.log(this.state)
 		})
 	}
 

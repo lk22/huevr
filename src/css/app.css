@@ -1,4 +1,7 @@
-@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import './../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+@import './vars/_all.css';
+@import './components/_all.css';
 
 body {
     background: green;
