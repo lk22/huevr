@@ -2,21 +2,6 @@ import React, {Component} from 'react'
 
 export default class NotFoundComponent extends Component {
 
-	constructor() {
-		super()
-		this.setState({
-			shown:false
-		})
-	}
-
-	componentDidMount() {
-		this.setState({
-			shown: true
-		})
-
-		console.log(this.state.shown)
-	}
-
 	render() {
 		return (
 			<div className="NotFoundComponent">

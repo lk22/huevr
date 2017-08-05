@@ -1,0 +1,10 @@
+.header{
+	height: 60px;
+	font-family: 'Chivo';
+	border-bottom: var(--border-size) var(--border-style);
+}
+
+.header > .navbar-brand {
+	font-size:25px;
+	line-height: 0;
+}

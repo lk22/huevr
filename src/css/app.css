@@ -1,8 +1,13 @@
 @import './../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+/*@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';*/
+@import url('https://fonts.googleapis.com/css?family=Chivo');
 @import './vars/_all.css';
 @import './components/_all.css';
 
 body {
-    background: green;
+    background: var(--background-one);
+    background: -webkit-linear-gradient(to right, var(--background-two), var(--background-one));
+    background: linear-gradient(to right, var(--background-two), var(--background-one));
+    color: var(--color);
+    font-family: --font;
 }

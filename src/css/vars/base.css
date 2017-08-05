@@ -2,6 +2,10 @@
 	--background-one: #000428;
 	--background-two: #004e92;
 	--font: 'Chivo';
-	--font-color: #fff;
+	--color: #fff;
+	--style-type: none;
+	--radius: 5px 5px 5px 5px;
+	--border-size: 1.5px;
+	--border-style: solid;
 }
 

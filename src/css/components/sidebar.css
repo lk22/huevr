@@ -1,0 +1,21 @@
+.Sidebar{
+	height: 740px;
+	font-family: 'Chivo';
+	padding:0rem;
+	left:-64px;
+}
+
+.Sidebar > .nav-list{
+	padding:0rem;
+}
+
+.Sidebar .nav-list > .list-item {
+	list-style-type: var(--style-type);
+	padding:0rem;
+	margin-top:1rem;
+}
+
+.Sidebar .nav-list .list-item > a{
+	color: var(--color);
+	font-size:13px;
+}
