@@ -6,7 +6,8 @@
 	color:#fff;
 }
 
-.header > .navbar-brand {
-	font-size:25px;
+.header > a .navbar-brand {
+	/*font-size:25px;*/
 	line-height: 0;
+	color: #fff;
 }
