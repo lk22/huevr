@@ -2,13 +2,14 @@
 	height: 740px;
 	font-family: 'Chivo';
 	padding:0rem;
-	left:-116px;
+	left: -80px;
 	top:-1px;
 	background: #F6F7F9;
 	padding:2rem;
 	border-right: 1.5px solid #ddd;
 	margin-top:1rem;
 	border-top:1.5px solid #ddd;
+	border-left: 1.5px solid #ddd;
 }
 
 .Sidebar > .nav-list{
