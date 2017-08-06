@@ -4,8 +4,9 @@ const $ = require('jquery')
 
 import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
+import Light from './functional/Light.jsx'
 
-export default class Light extends Component {
+export default class Lights extends Component {
 	constructor(props) {
 		super(props);
 
@@ -27,7 +28,11 @@ export default class Light extends Component {
 	getLights() {
 		$.each(this.state.lights, (index) => {
 			const light = this.state.lights[index]
-			console.log(light)
+			console.log(light.state.on)
+
+			return (<Light name={light.name} state={light.state.on}/>)
+
+			console.log("test")
 		})
 	}
 
@@ -42,7 +47,10 @@ export default class Light extends Component {
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						<h2 className="text-center">Lights Configuration</h2>
 						<hr/>
-						{this.getLights()}
+						<div className="container lights-list">
+							{this.getLights()}
+						</div>
+						
  					</div>
 				</div>
 			</div>

@@ -2,7 +2,6 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 import {Switch, Route} from 'react-router-dom'
-import {Light} from './Light.jsx'
 
 // stateless components
 import Header from './stateless/Header.jsx'
@@ -61,7 +60,7 @@ export default class Main extends Component {
 					<Sidebar />
 
 					<div className="col-md-9 col-lg-9 pull-right main-content">
-						{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading} 
+						{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
  					</div>
 				</div>
 			</div>
