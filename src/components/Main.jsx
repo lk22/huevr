@@ -19,8 +19,7 @@ export default class Main extends Component {
 			ip: '0.0.0.0',
 			id: null
 		}
-		const storage = window.localStorage
-		console.log(storage)
+
 
 		Axios.get('https://www.meethue.com/api/nupnp').then((bridge) => {
 			console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
@@ -30,7 +29,7 @@ export default class Main extends Component {
 				id: bridge.data[0].id
 			})
 
-			storage.setItem('ipaddress', this.state.ip);
+			window.localStorage.setItem('ipaddress', this.state.ip);
 
 		})
 	}
@@ -39,6 +38,14 @@ export default class Main extends Component {
 	componentDidMount() {
 		console.log("App is mounted")
 		console.log(this.state)
+	}
+
+	showLoading() {
+		return (
+			<div className="loading">
+				<h2>Loading...</h2>
+			</div>
+		)
 	}
 
 	// rendering the component 
@@ -54,7 +61,7 @@ export default class Main extends Component {
 					<Sidebar />
 
 					<div className="col-md-9 col-lg-9 pull-right main-content">
-						{ip && id ? <Bridge ip={ip} id={id} /> : <NotFoundComponent/>} 
+						{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading} 
  					</div>
 				</div>
 			</div>
