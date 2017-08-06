@@ -28,11 +28,9 @@ export default class Lights extends Component {
 	getLights() {
 		$.each(this.state.lights, (index) => {
 			const light = this.state.lights[index]
-			console.log(light.state.on)
+			console.log(light.name)
 
-			return (<Light name={light.name} state={light.state.on}/>)
-
-			console.log("test")
+			return <Light name={light.name}/>
 		})
 	}
 
@@ -50,7 +48,6 @@ export default class Lights extends Component {
 						<div className="container lights-list">
 							{this.getLights()}
 						</div>
-						
  					</div>
 				</div>
 			</div>

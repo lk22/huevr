@@ -7,7 +7,7 @@ import {Switch, Route} from 'react-router-dom'
 import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
-import Bridge from './Bridge.jsx'
+import Bridge from './functional/Bridge.jsx'
 
 export default class Main extends Component {
 
