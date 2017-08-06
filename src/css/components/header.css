@@ -1,7 +1,9 @@
 .header{
 	height: 60px;
 	font-family: 'Chivo';
-	border-bottom: var(--border-size) var(--border-style);
+	border-bottom: var(--border-size) var(--border-style) #ddd;
+	background: #1D6ECB;
+	color:#fff;
 }
 
 .header > .navbar-brand {

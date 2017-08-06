@@ -1,0 +1,11 @@
+.bridge {
+	position:fixed;
+	bottom:5px;
+	left:5px;
+	background: #000;
+	color: #fff;
+	height: 100px;
+	width: 200px;
+	font-family: 'Chivo';
+	border: 1.5px solid #ddd;
+}

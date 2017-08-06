@@ -6,8 +6,22 @@
 
 body {
     background: var(--background-one);
-    background: -webkit-linear-gradient(to right, var(--background-two), var(--background-one));
-    background: linear-gradient(to right, var(--background-two), var(--background-one));
     color: var(--color);
     font-family: --font;
+}
+
+.mainWrapper > .content{
+	min-height:600px;
+	margin:1px;
+	background: #fff;
+}
+
+.mainWrapper .content > .main-content{
+	min-height: 650px;
+	border: 1.5px solid #ddd;
+	background: #F6F7F9;
+	border-radius: 2px 2px 2px 2px;
+	margin-top:1rem;
+	margin-left:-2rem;
+	left:-41px;
 }

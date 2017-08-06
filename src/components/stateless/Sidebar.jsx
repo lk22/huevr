@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export default class Sidebar extends Component {
 	render() {
 		return (
-			<div className="col-md-2 col-lg-2 Sidebar">
+			<div className="col-md-2 col-lg-2 pull-left Sidebar">
 				<ul className="nav-list">
 					<li className="list-item">
 						<Link to="/lights">Lights</Link>

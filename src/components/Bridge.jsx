@@ -11,8 +11,10 @@ export default class Bridge extends Component {
 
 	render() {
 		return (
-			<div className="container bridge">
-				<h2>IP: {this.props.ip}</h2>
+			<div className="bridge">
+				<h4 className="text-center">Bound Bridge:</h4>
+				<h5 className="text-center">IP: {this.props.ip}</h5>
+				<h5 className="text-center">id: {this.props.id}</h5>
 			</div>
 		)
 	}
