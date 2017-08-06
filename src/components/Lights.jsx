@@ -5,6 +5,7 @@ const $ = require('jquery')
 import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
 import Light from './functional/Light.jsx'
+import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
 export default class Lights extends Component {
 	constructor(props) {
@@ -13,25 +14,27 @@ export default class Lights extends Component {
 		this.state = {
 			lights: {}
 		}
-
 	}
 
 	componentDidMount() {
 		console.log("light component mounted")
-		Axios.get('http://' + window.localStorage.getItem('ipaddress') + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
-			this.setState({
-				lights: lights.data
-			})
-		})
 	}
 
 	getLights() {
-		$.each(this.state.lights, (index) => {
-			const light = this.state.lights[index]
-			console.log(light.name)
 
-			return <Light name={light.name}/>
-		})
+		Axios.get('http://' + window.localStorage.getItem('ipaddress') + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
+			$.each(lights.data, (index) => {
+
+				const light = lights.data[index]
+				console.log(light)
+				return (<div><Light name={light.name}/></div>)
+			})
+
+			}).catch((Exception) => {
+				console.log(Exception)
+
+				return (<NotFoundComponent/>)
+			})
 	}
 
 	render() {

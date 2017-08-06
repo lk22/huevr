@@ -4,10 +4,6 @@ const BrowserWindow = electron.BrowserWindow
 
 let window
 
-// require('electron-reload')(__dirname, {
-//   electron: require('electron-prebuilt')
-// });
-
 const createWindow = () => {
 	window = new BrowserWindow({
 		height: 800,
@@ -16,12 +12,11 @@ const createWindow = () => {
 
 	window.loadURL('http://localhost:3999')
 
-	if (process.env.NODE_ENV === 'development') {
-	    const electronHot = require('electron-hot-loader');
-	    electronHot.install();
-	    electronHot.watchJsx(['src/main.jsx']);
-	    electronHot.watchCss(['src/**/*.css']);
-	}
+	window.openDevTools()
+    const electronHot = require('electron-hot-loader');
+    electronHot.install();
+    electronHot.watchJsx(['src/main.jsx']);
+    electronHot.watchCss(['src/**/*.css']);
 }
 
 app.on('ready', createWindow)
