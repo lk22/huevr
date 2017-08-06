@@ -16,7 +16,7 @@ export default class Light extends Component {
 	componentDidMount() {
 		console.log("light component mounted")
 		Axios.get('http://' + localStorage.getItem('ipaddress') + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
-			lights.map((light) => console.log(light))
+			console.log(lights)
 		})
 	}
 
