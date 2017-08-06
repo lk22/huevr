@@ -29,8 +29,8 @@
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" component={Main}/>
-
+                    <Route exact path="/" component={Main}/>
+                    <Route path="/lights" component={Light}/>
                 </Switch>
             </BrowserRouter>
         </Provider>,

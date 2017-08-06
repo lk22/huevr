@@ -19,6 +19,8 @@ export default class Main extends Component {
 			ip: '0.0.0.0',
 			id: null
 		}
+		const storage = window.localStorage
+		console.log(storage)
 
 		Axios.get('https://www.meethue.com/api/nupnp').then((bridge) => {
 			console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
@@ -27,6 +29,8 @@ export default class Main extends Component {
 				ip: bridge.data[0].internalipaddress,
 				id: bridge.data[0].id
 			})
+
+			storage.setItem('ipaddress', this.state.ip);
 
 		})
 	}
@@ -48,7 +52,6 @@ export default class Main extends Component {
 
 				<div className="content container-fluid">
 					<Sidebar />
-					{ip && id ? <Bridge ip={ip} id={id} /> : <NotFoundComponent/>} 
 
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						{ip && id ? <Bridge ip={ip} id={id} /> : <NotFoundComponent/>} 

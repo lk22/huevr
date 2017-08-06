@@ -1,11 +1,21 @@
 .bridge {
-	position:fixed;
-	bottom:5px;
-	left:5px;
-	background: #000;
-	color: #fff;
-	height: 100px;
-	width: 200px;
+	color: #000;
 	font-family: 'Chivo';
-	border: 1.5px solid #ddd;
+	padding-left:1rem;
+	padding-right:1rem;
+}
+
+.bridge > .row{
+	padding-left:2rem;
+	padding-right:2rem;
+}
+
+.bridge .row > p,
+.bridge .row > h1,
+.bridge .row > h2,
+.bridge .row > h3, 
+.bridge .row > h4, 
+.bridge .row > h5,
+.bridge .row > h6 {
+	margin-top: 2.5rem;
 }

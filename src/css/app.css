@@ -10,13 +10,15 @@ body {
     font-family: --font;
 }
 
-.mainWrapper > .content{
+.mainWrapper > .content,
+.lightsWrapper > .content{
 	min-height:600px;
 	margin:1px;
 	background: #fff;
 }
 
-.mainWrapper .content > .main-content{
+.mainWrapper .content > .main-content,
+.lightsWrapper .content > .main-content{
 	min-height: 650px;
 	border: 1.5px solid #ddd;
 	background: #F6F7F9;
@@ -24,4 +26,5 @@ body {
 	margin-top:1rem;
 	margin-left:-2rem;
 	left:-41px;
+	font-family: var(--font);
 }
