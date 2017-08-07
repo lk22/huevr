@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Axios from 'axios'
 const $ = require('jquery')
 
@@ -25,21 +26,26 @@ export default class Lights extends Component {
 		Axios.get('http://' + ip + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
 			$('.lights-list').html('')
 			$.each(lights.data, (index) => {
+
 				const light = lights.data[index]
 				const state = light.state.on
-				let statement
-				
+				let statements = []
+
 				if(state === true){
-					statement = 'Light is turned on'
+					statements.push('Light is turned on')
 				} else {
-					statement = 'Light is turned off'
+					statements.push('Light is turned off')
 				}
 
 				$('.lights-list').append([
 					'<div class="row light">',
-						'<h4 class="light-name">' + light.name +'</h4>',
-						'<h4 class="light-state-on">' +  statement + '</h4>',
-						'<h4 class="light-manufacturer">' + light.manufacturername + '</h4>',
+						'<div class="light-name center-block"><a href="/lights/' + light + '">' + light.name + '</a></div>',
+						'<hr/>',
+						'<h5 class="light-state-on">' +  statements[0] + '</h5>',
+						'<h5 class="light-type">Type: ' + light.type + '</h5>',
+						'<h5 class="light-manufacturer">Manufacturer: ' + light.manufacturername + '</h5>',
+						'<h5 class="light-alert">Alert: ' + light.state.alert + '</h5>',
+						'<hr/>',
 					'</div>'
 				].join('\n'))
 			})

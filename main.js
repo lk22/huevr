@@ -15,9 +15,9 @@ const createWindow = () => {
 	window.openDevTools()
 	if(process.env.NODE_ENV === 'development') {
 		 const electronHot = require('electron-hot-loader');
-    electronHot.install();
-    electronHot.watchJsx(['src/main.jsx']);
-    electronHot.watchCss(['src/**/*.css']);
+	    electronHot.install();
+	    electronHot.watchJsx(['src/main.jsx']);
+	    electronHot.watchCss(['src/**/*.css']);
 	}
    
 }

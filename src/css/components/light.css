@@ -1,7 +1,10 @@
 .light{
 	min-height:150px;
 	font-size:15px;
+	padding: 1rem;
 }
-.light > .light-name{ font-size: 20px; text-decoration:underline; }
+.light > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase;}
 .light > .light-state-on,
-.light > .light-manufacturer{ font-size:13px; } 
+.light > .light-manufacturer,
+.light > .light-type,
+.light > .light-alert{ font-size:15px; padding: 1.2rem;} 
