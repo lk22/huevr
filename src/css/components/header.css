@@ -4,6 +4,11 @@
 	border-bottom: var(--border-size) var(--border-style) #ddd;
 	background: #1D6ECB;
 	color:#fff;
+	position:fixed;
+	top:0px;
+	left:0px;
+	right:0px;
+	z-index:2;
 }
 
 .header > a .navbar-brand {
