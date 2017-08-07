@@ -1,20 +1,14 @@
-.light{
-	min-height:150px;
-	font-size:15px;
-	padding: 1rem;
-	width: 79%;
-}
+.light{ min-height:150px; font-size:15px; padding: 1rem; width: 79%; }
+
+.light:hover{background: #3498db; color: #fff; transition: ease-in-out 0.2s all;}
+
+.light:not(:hover){transition: ease-in-out 0.2s all;}
 .light > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase;}
 .light .light-name > a{color: #fff;}
 
-.light > .light-name:hover{
-	background: #2ecc71;
-	transition: ease-in-out 0.2s all;
-}
+.light > .light-name:hover{ background: #3498db; transition: ease-in-out 0.2s all; }
 
-.light > .light-name:not(:hover) {
-	transition:ease-in-out 0.2s all;
-}
+.light > .light-name:not(:hover) { transition:ease-in-out 0.2s all; }
 
 .light > .light-state-on,
 .light > .light-manufacturer,
