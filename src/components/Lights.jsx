@@ -28,6 +28,7 @@ export default class Lights extends Component {
 				const light = lights.data[index]
 				const state = light.state.on
 				let statement
+				
 				if(state === true){
 					statement = 'Light is turned on'
 				} else {
