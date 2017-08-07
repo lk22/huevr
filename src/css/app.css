@@ -8,6 +8,7 @@ body {
     background: var(--background-one);
     color: var(--color);
     font-family: --font;
+    
 }
 
 .mainWrapper > .content,
@@ -15,6 +16,7 @@ body {
 	min-height:600px;
 	margin:1px;
 	background: #F6F7F9;
+	
 }
 
 .mainWrapper .content > .main-content,
@@ -26,4 +28,5 @@ body {
 	margin-left:-2rem;
 	left:-41px;
 	font-family: var(--font);
+	top:70px;
 }
