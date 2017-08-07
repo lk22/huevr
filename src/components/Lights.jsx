@@ -23,13 +23,27 @@ export default class Lights extends Component {
 	getLights() {
 		const ip = window.localStorage.getItem('ipaddress')
 		Axios.get('http://' + ip + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
+			$('.lights-list').html('')
 			$.each(lights.data, (index) => {
 				const light = lights.data[index]
-				const name = light.name
-				const switcher = light.state.on === true ? true : false
-				console.log(switcher)
+				const state = light.state.on
+				let statement
+				if(state === true){
+					statement = 'Light is turned on'
+				} else {
+					statement = 'Light is turned off'
+				}
+
+				$('.lights-list').append([
+					'<div class="row light">',
+						'<h4 class="light-name">' + light.name +'</h4>',
+						'<h4 class="light-state-on">' +  statement + '</h4>',
+						'<h4 class="light-manufacturer">' + light.manufacturername + '</h4>',
+					'</div>'
+				].join('\n'))
 			})
 		})
+		
 	}
 
 	render() {
