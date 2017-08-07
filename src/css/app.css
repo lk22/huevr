@@ -8,7 +8,7 @@ body {
     background: var(--background-one);
     color: var(--color);
     font-family: --font;
-    
+    overflow-x: hidden;
 }
 
 .mainWrapper > .content,

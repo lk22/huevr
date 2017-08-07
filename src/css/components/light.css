@@ -2,6 +2,7 @@
 	min-height:150px;
 	font-size:15px;
 	padding: 1rem;
+	width: 79%;
 }
 .light > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase;}
 .light .light-name > a{color: #fff;}
