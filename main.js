@@ -13,10 +13,13 @@ const createWindow = () => {
 	window.loadURL('http://localhost:3999')
 
 	window.openDevTools()
-    const electronHot = require('electron-hot-loader');
+	if(process.env.NODE_ENV === 'development') {
+		 const electronHot = require('electron-hot-loader');
     electronHot.install();
     electronHot.watchJsx(['src/main.jsx']);
     electronHot.watchCss(['src/**/*.css']);
+	}
+   
 }
 
 app.on('ready', createWindow)

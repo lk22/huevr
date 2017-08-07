@@ -21,20 +21,16 @@ export default class Lights extends Component {
 	}
 
 	getLights() {
-
 		Axios.get('http://' + window.localStorage.getItem('ipaddress') + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
 			$.each(lights.data, (index) => {
 
 				const light = lights.data[index]
 				console.log(light)
-				return (<div><Light name={light.name}/></div>)
+				return (<Light name={light.name}/>)
 			})
 
-			}).catch((Exception) => {
-				console.log(Exception)
-
-				return (<NotFoundComponent/>)
-			})
+			
+		})
 	}
 
 	render() {
@@ -49,10 +45,10 @@ export default class Lights extends Component {
 						<h2 className="text-center">Lights Configuration</h2>
 						<hr/>
 						<div className="container lights-list">
-							{this.getLights()}
+							{this.getLights()} 
 						</div>
- 					</div>
-				</div>
+					</div>
+				</div> 
 			</div>
 		)
 	}
