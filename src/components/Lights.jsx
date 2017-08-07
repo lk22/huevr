@@ -21,15 +21,14 @@ export default class Lights extends Component {
 	}
 
 	getLights() {
-		Axios.get('http://' + window.localStorage.getItem('ipaddress') + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
+		const ip = window.localStorage.getItem('ipaddress')
+		Axios.get('http://' + ip + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
 			$.each(lights.data, (index) => {
-
 				const light = lights.data[index]
-				console.log(light)
-				return (<Light name={light.name}/>)
+				const name = light.name
+				const switcher = light.state.on === true ? true : false
+				console.log(switcher)
 			})
-
-			
 		})
 	}
 
@@ -37,10 +36,8 @@ export default class Lights extends Component {
 		return (
 			<div className="lightsWrapper">
 				<Header />
-
 				<div className="content container-fluid">
 					<Sidebar />
-
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						<h2 className="text-center">Lights Configuration</h2>
 						<hr/>
