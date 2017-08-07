@@ -4,6 +4,17 @@
 	padding: 1rem;
 }
 .light > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase;}
+.light .light-name > a{color: #fff;}
+
+.light > .light-name:hover{
+	background: #2ecc71;
+	transition: ease-in-out 0.2s all;
+}
+
+.light > .light-name:not(:hover) {
+	transition:ease-in-out 0.2s all;
+}
+
 .light > .light-state-on,
 .light > .light-manufacturer,
 .light > .light-type,
