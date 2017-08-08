@@ -1,5 +1,4 @@
 @import './../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-/*@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';*/
 @import url('https://fonts.googleapis.com/css?family=Chivo');
 @import './vars/_all.css';
 @import './components/_all.css';
@@ -16,7 +15,7 @@ body {
 	min-height:600px;
 	margin:1px;
 	background: #F6F7F9;
-	
+	margin-bottom:2px;
 }
 
 .mainWrapper .content > .main-content,

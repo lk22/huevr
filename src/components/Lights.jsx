@@ -28,6 +28,7 @@ export default class Lights extends Component {
 			$.each(lights.data, (index) => {
 
 				const light = lights.data[index]
+				console.log(light)
 				const state = light.state.on
 				let statements = []
 
@@ -39,7 +40,7 @@ export default class Lights extends Component {
 
 				$('.lights-list').append([
 					'<div class="row light">',
-						'<div class="light-name center-block"><a href="/lights/' + light + '">' + light.name + '</a></div>',
+						'<div class="light-name center-block"><a href="/lights/' + light.name + '">' + light.name + '</a></div>',
 						'<hr/>',
 						'<h5 class="light-state-on">' +  statements[0] + '</h5>',
 						'<h5 class="light-type">Type: ' + light.type + '</h5>',
