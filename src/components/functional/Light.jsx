@@ -27,13 +27,20 @@ export default class Light extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		// console.log("Light: " + this.match.params.id + "is loaded")
+		console.log("Light: " + this.props.match.params.id + "is loaded")
 		console.log(this.props.match.params.id)
+		const light = this.props.match.params.id
+		this.fetchLight(light)
 	}
 
 	fetchLight(light) {
+		const id = this.props.match.params.id
 		const ip = window.localStorage.getItem('ipaddress')
 		console.log(ip)
+
+		Axios.get('http://' + ip + '/api/O6fCoPRaW0VIyB75qKK9BAGfi85wxWHgfnhfsQkb/lights/' + id).then((response) => {
+			console.log(response)
+		})
 	}
 
 	/**
