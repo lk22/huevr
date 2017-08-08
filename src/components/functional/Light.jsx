@@ -6,7 +6,6 @@ import {Link, Router, Route} from 'react-router-dom'
 // stateless components
 import Header from './../stateless/Header.jsx'
 import Sidebar from './../stateless/Sidebar.jsx'
-
 // Light Components
 import LightItem from './../lights/LightItem.jsx'
 
@@ -53,8 +52,6 @@ export default class Light extends Component {
 					state: data.state
 				}
 			})
-
-			// console.log(this.state.light.state)
 		})
 	}
 
@@ -67,7 +64,7 @@ export default class Light extends Component {
 				<h4 className="light-manufacturer">Manufacturer: {light.manufacturername}</h4>
 				<h4 className="light-model_id">ModelID: {light.modelid}</h4>
 				<h4 className="light-type">Type: {light.type}</h4>
-				<h4>{state.on === true ? 'light is on' : 'light is off'}</h4>
+				<h4 className="light-state-on">{state.on === true ? 'light is on' : 'light is off'}</h4>
 			</div>
 		)
 		

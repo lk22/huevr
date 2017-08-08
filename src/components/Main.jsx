@@ -1,12 +1,22 @@
 // dependencies
 import React, {Component} from 'react'
 import Axios from 'axios'
-import {Switch, Route} from 'react-router-dom'
+import {
+	Switch,
+ 	Route
+} from 'react-router-dom'
+import {
+	log,
+ 	fetchBridge,
+ 	getStorageItems
+} from './../globals.js'
 
 // stateless components
 import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
+
+// functional components
 import Bridge from './functional/Bridge.jsx'
 
 /**
@@ -27,8 +37,7 @@ export default class Main extends Component {
 			id: null
 		}
 
-
-		Axios.get('https://www.meethue.com/api/nupnp').then((bridge) => {
+		fetchBridge().then((bridge) => {
 			console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
 
 			this.setState({
@@ -37,8 +46,9 @@ export default class Main extends Component {
 			})
 
 			window.localStorage.setItem('ipaddress', this.state.ip);
-
 		})
+
+		getStorageItems(['ipaddress'])
 	}
 
 	/**
@@ -46,8 +56,10 @@ export default class Main extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		console.log("App is mounted")
-		console.log(this.state)
+		log([
+			"App is mounted",
+			this.state
+		])
 	}
 
 	/**

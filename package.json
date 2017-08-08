@@ -21,6 +21,7 @@
     "electron-hot-loader": "^0.8.0",
     "electron-prebuilt": "^1.4.13",
     "electron-reload": "^1.2.1",
+    "fs": "^0.0.1-security",
     "jquery": "^3.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

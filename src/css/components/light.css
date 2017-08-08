@@ -18,11 +18,10 @@
  * single light
  */
 
-.light-single{ min-height: 150px; font-size:15; padding:1rem; width:79% }
-.light-single:hover{ background: #3498db; transition:ease-in-out 0.2s all; color: #fff;}
-.light-single:not(:hover){ transition:ease-in-out 0.2s all; }
+.light-single{ color: #fff; background: #3498db; min-height: 150px; font-size:15; padding:1rem; width:79% }
 
 .light-single > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase; color:#fff;}
 .light-single > .light-manufacturer,
 .light-single > .light-model_id,
-.light-single > .light-type{ font-size:15px; padding: 1.2rem;  }
+.light-single > .light-type,
+.light-single > .light-state-on{ font-size:15px; padding: 1.2rem;  }
