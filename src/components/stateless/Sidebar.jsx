@@ -1,7 +1,16 @@
+// Dependencies
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
+/**
+ * Sidebar Component
+ */
 export default class Sidebar extends Component {
+
+	/**
+	 * Rendering the component 
+	 * @return {[type]} [description]
+	 */
 	render() {
 		return (
 			<div className="col-md-2 col-lg-2 pull-left Sidebar">

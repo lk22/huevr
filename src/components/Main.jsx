@@ -9,8 +9,16 @@ import Sidebar from './stateless/Sidebar.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 import Bridge from './functional/Bridge.jsx'
 
+/**
+ * Main Component
+ */
 export default class Main extends Component {
 
+	/**
+	 * Constructor
+	 * @param  {[type]} props [description]
+	 * @return {[type]}       [description]
+	 */
 	constructor(props) {
 		super(props);
 
@@ -33,12 +41,19 @@ export default class Main extends Component {
 		})
 	}
 
-	// component is mounted 
+	/**
+	 * When the component is mounted
+	 * @return {[type]} [description]
+	 */
 	componentDidMount() {
 		console.log("App is mounted")
 		console.log(this.state)
 	}
 
+	/**
+	 * Show Loading 
+	 * @return {[type]} [description]
+	 */
 	showLoading() {
 		return (
 			<div className="loading">
@@ -47,7 +62,10 @@ export default class Main extends Component {
 		)
 	}
 
-	// rendering the component 
+	/**
+	 * Rendering the component
+	 * @return {[type]} [description]
+	 */
 	render() {
 
 		const {ip, id} = this.state

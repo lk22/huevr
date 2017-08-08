@@ -1,7 +1,15 @@
+// dependencies
 import React, {Component} from 'react'
 
+/**
+ * Not found component 
+ */
 export default class NotFoundComponent extends Component {
 
+	/**
+	 * Rendering the component 
+	 * @return {[type]} [description]
+	 */
 	render() {
 		return (
 			<div className="NotFound">

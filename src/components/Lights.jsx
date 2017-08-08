@@ -1,14 +1,26 @@
+// dependencies
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Axios from 'axios'
-const $ = require('jquery')
 
+// stateless component
 import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
-import Light from './functional/Light.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
+// functional components
+import LightItem from './lights/LightItem.jsx'
+
+/**
+ * Lights list component
+ */
 export default class Lights extends Component {
+
+	/**
+	 * Constructor
+	 * @param  {[type]} props [description]
+	 * @return {[type]}       [description]
+	 */
 	constructor(props) {
 		super(props);
 
@@ -17,11 +29,19 @@ export default class Lights extends Component {
 		}
 	}
 
+	/**
+	 * when the component is mounted
+	 * @return {[type]} [description]
+	 */
 	componentDidMount() {
 		console.log("light component mounted")
 		this.getLights();
 	}
 
+	/**
+	 * Fetching all the lights
+	 * @return {[type]} [description]
+	 */
 	getLights() {
 		const ip = window.localStorage.getItem('ipaddress')
 		 
@@ -42,10 +62,14 @@ export default class Lights extends Component {
 		
 	}
 
+	/**
+	 * Rendering the list
+	 * @return {[type]} [description]
+	 */
 	list() {
 		return this.state.lights.map((light, index) => {
 			return (
-			   <Light 
+			   <LightItem
 					key={index}
 					data={light}
 			   />
@@ -53,6 +77,10 @@ export default class Lights extends Component {
 		})
 	}
 
+	/** 
+	 * Rendering the lights list component
+	 * @return {[type]} [description]
+	 */
 	render() {
 		return (
 			<div className="lightsWrapper">

@@ -32,7 +32,7 @@
                 <Switch>
                     <Route exact path="/" component={Main}/>
                     <Route path="/lights" component={Lights}/>
-                    <Route path="/:id" component={Light}/>
+                    <Route path="/lights/:id" component={Light}/>
                 </Switch>
             </BrowserRouter>
         </Provider>,
