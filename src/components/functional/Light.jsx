@@ -22,7 +22,10 @@ export default class Light extends Component {
 		super(props);
 
 		this.state = {
-			light: {}
+			light: {
+				data: {},
+				state: {}
+			}
 		}
 	}
 
@@ -42,23 +45,29 @@ export default class Light extends Component {
 		Axios.get('http://' + ip + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights/' + id).then((response) => {
 			const data = response.data
 			console.log(data)
+			const state = response.data.state
 
 			this.setState({
-				light: data
+				light: {
+					data,
+					state: data.state
+				}
 			})
 
-			// console.log(this.state)
+			// console.log(this.state.light.state)
 		})
 	}
 
 	light() {
-		const light = this.state.light
+		const light = this.state.light.data
+		const state = this.state.light.state
 		return (
 			<div className="light-single">
 				<div className="light-name">{light.name}</div>
 				<h4 className="light-manufacturer">Manufacturer: {light.manufacturername}</h4>
 				<h4 className="light-model_id">ModelID: {light.modelid}</h4>
 				<h4 className="light-type">Type: {light.type}</h4>
+				<h4>{state.on === true ? 'light is on' : 'light is off'}</h4>
 			</div>
 		)
 		
