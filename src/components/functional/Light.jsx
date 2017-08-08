@@ -1,5 +1,6 @@
 // dependencies
 import React, {Component} from 'react'
+import Axios from 'axios'
 import {Link, Router, Route} from 'react-router-dom'
 
 // stateless components
@@ -26,7 +27,13 @@ export default class Light extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		console.log("Light: " + this.props.data.name + "is loaded")
+		// console.log("Light: " + this.match.params.id + "is loaded")
+		console.log(this.props.match.params.id)
+	}
+
+	fetchLight(light) {
+		const ip = window.localStorage.getItem('ipaddress')
+		console.log(ip)
 	}
 
 	/**
@@ -34,17 +41,22 @@ export default class Light extends Component {
 	 * @return {[type]} [description]
 	 */
 	render() {
+		const props = this.props
+		const param = this.props.match.params
 		return(
 			<div className="lightWrapper">
-				
+				<Header />
+				<div className="content container-fluid">
+					<Sidebar />
+					<div className="col-md-9 col-lg-9 pull-right main-content">
+						<h2 className="text-center"></h2>
+						<hr/>
+						<div className="container light-content">
+							
+						</div>
+					</div>
+				</div> 
 			</div>
-				<div className="row light">
-					<h4 className="light-name"><Link to={"/" + props.data.id}>{props.data.name}</Link></h4>
-					<h4 className="light-state-on">State: {props.data.state.on === true ? 'Light is on' : 'Light is off'}</h4>
-					<h4 className="light-manufacturer">Manufacturer: {props.data.manufacturername}</h4>
-					<h4 className="light-model_id">ModelID: {props.data.modelid}</h4>
-					<h4 className="light-type">Type: {props.data.type}</h4>
-				</div>
 		) 
 	}	
 }

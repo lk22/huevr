@@ -44,12 +44,17 @@ export default class Lights extends Component {
 	 */
 	getLights() {
 		const ip = window.localStorage.getItem('ipaddress')
-		 
 		Axios.get('http://' + ip +'/api/O6fCoPRaW0VIyB75qKK9BAGfi85wxWHgfnhfsQkb/lights').then((response) => {
 			// console.log(response)
-			const data = response.data;		
+			const data = response.data;	
+
+			// define the lights and convert data to array keys
 			const lights = Object.keys(data).map((id) => {
+
+				// assign id key
 				return Object.assign(data[id], {
+		
+					// id field => integer
 					id: parseInt(id, 10),
 				})
 			})
@@ -57,7 +62,6 @@ export default class Lights extends Component {
 			this.setState({
 				lights
 			})
-			console.log(lights);
 		})
 		
 	}
