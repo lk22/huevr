@@ -39,7 +39,7 @@ export default class Light extends Component {
 		console.log(ip)
 
 		Axios.get('http://' + ip + '/api/O6fCoPRaW0VIyB75qKK9BAGfi85wxWHgfnhfsQkb/lights/' + id).then((response) => {
-			console.log(response)
+			console.log(response) 
 		})
 	}
 
