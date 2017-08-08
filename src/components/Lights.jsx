@@ -13,45 +13,44 @@ export default class Lights extends Component {
 		super(props);
 
 		this.state = {
-			lights: {}
+			lights: []
 		}
 	}
 
 	componentDidMount() {
 		console.log("light component mounted")
+		this.getLights();
 	}
 
 	getLights() {
 		const ip = window.localStorage.getItem('ipaddress')
-		Axios.get('http://' + ip + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((lights) => {
-			$('.lights-list').html('')
-			$.each(lights.data, (index) => {
-
-				const light = lights.data[index]
-				console.log(light)
-				const state = light.state.on
-				let statements = []
-
-				if(state === true){
-					statements.push('Light is turned on')
-				} else {
-					statements.push('Light is turned off')
-				}
-
-				$('.lights-list').append([
-					'<div class="row light">',
-						'<div class="light-name center-block"><a href="/lights/' + light.name + '">' + light.name + '</a></div>',
-						'<hr/>',
-						'<h5 class="light-state-on">' +  statements[0] + '</h5>',
-						'<h5 class="light-type">Type: ' + light.type + '</h5>',
-						'<h5 class="light-manufacturer">Manufacturer: ' + light.manufacturername + '</h5>',
-						'<h5 class="light-alert">Alert: ' + light.state.alert + '</h5>',
-						'<hr/>',
-					'</div>'
-				].join('\n'))
+		 
+		Axios.get('http://' + ip +'/api/O6fCoPRaW0VIyB75qKK9BAGfi85wxWHgfnhfsQkb/lights').then((response) => {
+			// console.log(response)
+			const data = response.data;		
+			const lights = Object.keys(data).map((id) => {
+				return Object.assign(data[id], {
+					id: parseInt(id, 10),
+				})
 			})
+
+			this.setState({
+				lights
+			})
+			console.log(lights);
 		})
 		
+	}
+
+	list() {
+		return this.state.lights.map((light, index) => {
+			return (
+			   <Light 
+					key={index}
+					data={light}
+			   />
+			);
+		})
 	}
 
 	render() {
@@ -64,7 +63,7 @@ export default class Lights extends Component {
 						<h2 className="text-center">Lights Configuration</h2>
 						<hr/>
 						<div className="container lights-list">
-							{this.getLights()} 
+							{this.list()} 
 						</div>
 					</div>
 				</div> 
