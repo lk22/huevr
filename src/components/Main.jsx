@@ -8,7 +8,8 @@ import {
 import {
 	log,
  	fetchBridge,
- 	getStorageItems
+ 	getStorageItems,
+ 	authenticate
 } from './../globals.js'
 
 // stateless components
@@ -37,6 +38,8 @@ export default class Main extends Component {
 			id: null
 		}
 
+		console.log(window.localStorage.ipaddress)
+
 		fetchBridge().then((bridge) => {
 			console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
 
@@ -44,6 +47,8 @@ export default class Main extends Component {
 				ip: bridge.data[0].internalipaddress,
 				id: bridge.data[0].id
 			})
+
+			authenticate()
 
 			window.localStorage.setItem('ipaddress', this.state.ip);
 		})

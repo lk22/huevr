@@ -1,6 +1,6 @@
 import Axios from 'axios'
 const storage = window.localStorage
-
+console.log(storage.getItem('switcher'))
 export const log = (logs = []) => {
 	logs.forEach((log) => {
 		console.log(log)
@@ -9,7 +9,7 @@ export const log = (logs = []) => {
 
 export const getStorageItems = (items = []) => {
 	items.forEach((item) => {
-		console.log(window.localStorage.getItem(item))
+		return window.localStorage.getItem(item)
 	})
 }
 
@@ -37,6 +37,21 @@ const makeRequest = (method, url, data = {}) => {
 }
 
 export const fetchBridge = () => {
-	return Axios.get('https://www.meethue.com/api/nupnp')
+	return makeRequest('GET', 'https://www.meethue.com/api/nupnp')
+}
+
+export const authenticate = () => {
+	const ip = getStorageItems(['ipaddress'])
+	return makeRequest('POST', 'http://' + window.localStorage.getItem('ipaddress') + '/api', {
+		"devicetype" : "new_huevr"
+	}).then((response) => {
+		console.log(response)
+		window.localStorage.setItem('username', response.data.username)
+	})
+}
+
+export const fetchLights = () => {
+	const ip = getStorageItems(['ipaddress'])
+	return makeRequest('GET', 'http://' + ip + '/api')
 }
 
