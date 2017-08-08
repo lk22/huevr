@@ -15,3 +15,15 @@
 .light > .light-type,
 .light > .light-alert,
 .light > .light-model_id{ font-size:15px; padding: 1.2rem;} 
+
+
+/**
+ * single light
+ */
+
+.light-single{ min-height: 150px; font-size:15; padding:1rem; width:79% }
+.light-single:hover{ background: #3498db; transition:ease-in-out 0.2s all; }
+.light-single:not(:hover){ transition:ease-in-out 0.2s all; }
+
+.light-single > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase; color:#fff;}
+

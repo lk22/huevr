@@ -11,7 +11,8 @@ body {
 }
 
 .mainWrapper > .content,
-.lightsWrapper > .content{
+.lightsWrapper > .content,
+.lightWrapper > .coontent{
 	min-height:600px;
 	margin:1px;
 	background: #F6F7F9;
@@ -19,7 +20,8 @@ body {
 }
 
 .mainWrapper .content > .main-content,
-.lightsWrapper .content > .main-content{
+.lightsWrapper .content > .main-content,
+.lightWrapper .content > .main-content{
 	min-height: 650px;
 	background: #F6F7F9;
 	border-radius: 2px 2px 2px 2px;

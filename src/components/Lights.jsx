@@ -44,7 +44,8 @@ export default class Lights extends Component {
 	 */
 	getLights() {
 		const ip = window.localStorage.getItem('ipaddress')
-		Axios.get('http://' + ip +'/api/O6fCoPRaW0VIyB75qKK9BAGfi85wxWHgfnhfsQkb/lights').then((response) => {
+		console.log(ip)
+		Axios.get('http://' + ip +'/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((response) => {
 			// console.log(response)
 			const data = response.data;	
 
