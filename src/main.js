@@ -20,6 +20,7 @@
 
     import Main from './components/Main.jsx'
     import Lights from './components/Lights.jsx'
+    import Light from './components/functional/Light.jsx'
 
 /**
  *  Defining routes 
@@ -31,6 +32,7 @@
                 <Switch>
                     <Route exact path="/" component={Main}/>
                     <Route path="/lights" component={Lights}/>
+                    <Route path="/:id" component={Light}/>
                 </Switch>
             </BrowserRouter>
         </Provider>,

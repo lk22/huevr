@@ -13,4 +13,5 @@
 .light > .light-state-on,
 .light > .light-manufacturer,
 .light > .light-type,
-.light > .light-alert{ font-size:15px; padding: 1.2rem;} 
+.light > .light-alert,
+.light > .light-model_id{ font-size:15px; padding: 1.2rem;} 
