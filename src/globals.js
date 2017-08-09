@@ -70,16 +70,13 @@ export const authenticate = () => {
 	return makeRequest('POST', 'http://' + storage.getItem('ipaddress') + '/api', {
 		"devicetype" : "new_huevr"
 	}).then((response) => {
-		if(response.data[0].error.length < 1){
-			console.log(response.data[0])
-			window.localStorage.setItem('username', response.data.username)
-		} else {
-			alert(response.data[0].error.message) 
-		}
-		
+		console.log(response)
+		const username = response.data[0].success.username
+		storage.setItem('username', username)
+		console.log(storage.getItem('username'))
 	}).catch((err) => {
-		if( err.message === 'link button not pressed' ) {
-			alert (err.message)
+		if( err.description === 'link button not pressed' ) {
+			alert (err.description)
 		}
 	})
 }

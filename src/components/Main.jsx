@@ -48,8 +48,10 @@ export default class Main extends Component {
 				id: bridge.data[0].id
 			})
 
-			authenticate()
-
+			if (!window.localStorage.getItem('username') || !window.localStorage.getItem('ipaddress') === this.state.ip){
+				authenticate()
+			}
+		
 			window.localStorage.setItem('ipaddress', this.state.ip);
 		})
 
