@@ -48,10 +48,8 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	getLights() {
-		const ip = window.localStorage.getItem('ipaddress')
-		const username = window.localStorage.getItem('username')
 		console.log(ip)
-	
+		if(username)
 		fetchLights().then((response) => {
 		 	// console.log(response)
 			const data = response.data;	
@@ -93,17 +91,16 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	render() {
+		const username = window.localStorage.username
 		return (
 			<div className="lightsWrapper">
 				<Header />
 				<div className="content container-fluid">
 					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">
-						<h2 className="text-left">Lights Configuration</h2>
+						{username ? <h2 className="text-left">Lights Configuration</h2> : ''}
 						<hr/>
-						<div className="container lights-list">
-							{window.localStorage.getItem('username') ? this.list() : <NotFoundComponent component="lights"/>}
-						</div>
+						{username ? <div className="container lights-list">{this.list()}</div> : <NotFoundComponent component="lights"/> }
 					</div>
 				</div> 
 			</div>

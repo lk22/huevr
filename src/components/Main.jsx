@@ -48,7 +48,7 @@ export default class Main extends Component {
 					id: bridge.data[0].id
 				})
 
-				if (!window.localStorage.getItem('username') || !window.localStorage.getItem('ipaddress') === this.state.ip){
+				if (!window.localStorage.username || !window.localStorage.ipaddress === this.state.ip){
 					authorize() // authorize user with new given username
 				}
 			
