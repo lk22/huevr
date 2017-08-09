@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Axios from 'axios'
 
-
 // stateless component
 import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
@@ -45,8 +44,9 @@ export default class Lights extends Component {
 	 */
 	getLights() {
 		const ip = window.localStorage.getItem('ipaddress')
+		const username = window.localStorage.getItem('username')
 		console.log(ip)
-		Axios.get('http://' + ip +'/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights').then((response) => {
+		Axios.get('http://' + ip +'/api/' + username + '/lights').then((response) => {
 			// console.log(response)
 			const data = response.data;	
 

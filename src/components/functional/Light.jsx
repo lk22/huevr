@@ -41,7 +41,9 @@ export default class Light extends Component {
 	fetchLight(light) {
 		const id = this.props.match.params.id
 		const ip = window.localStorage.getItem('ipaddress')
-		Axios.get('http://' + ip + '/api/OcRa6hp2FKHi3QkpAQeqPUB29iD56zVFntSxw-Eq/lights/' + id).then((response) => {
+		const username = window.localStorage.getItem('username')
+		Axios.get('http://' + ip + '/api/' + username + '/lights/' + id).then((response) => {
+
 			const data = response.data
 			console.log(data)
 			const state = response.data.state
