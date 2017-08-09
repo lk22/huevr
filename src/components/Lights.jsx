@@ -51,7 +51,7 @@ export default class Lights extends Component {
 		const ip = window.localStorage.getItem('ipaddress')
 		const username = window.localStorage.getItem('username')
 		console.log(ip)
-
+	
 		fetchLights().then((response) => {
 		 	// console.log(response)
 			const data = response.data;	
@@ -102,7 +102,7 @@ export default class Lights extends Component {
 						<h2 className="text-left">Lights Configuration</h2>
 						<hr/>
 						<div className="container lights-list">
-							{this.list()} 
+							{window.localStorage.getItem('username') ? this.list() : <NotFoundComponent component="lights"/>}
 						</div>
 					</div>
 				</div> 
