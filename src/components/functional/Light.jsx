@@ -3,6 +3,11 @@ import React, {Component} from 'react'
 import Axios from 'axios'
 import {Link, Router, Route} from 'react-router-dom'
 
+/**
+ * globals
+ */
+import {fetchLight} from './../../globals.js'
+
 // stateless components
 import Header from './../stateless/Header.jsx'
 import Sidebar from './../stateless/Sidebar.jsx'
@@ -39,11 +44,10 @@ export default class Light extends Component {
 	}
 
 	fetchLight(light) {
-		const id = this.props.match.params.id
 		const ip = window.localStorage.getItem('ipaddress')
 		const username = window.localStorage.getItem('username')
-		Axios.get('http://' + ip + '/api/' + username + '/lights/' + id).then((response) => {
-
+		
+		fetchLight(light).then((response) => {
 			const data = response.data
 			console.log(data)
 			const state = response.data.state

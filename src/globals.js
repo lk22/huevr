@@ -55,14 +55,6 @@ const makeRequest = (method, url, data = {}) => {
 }
 
 /**
- * Fetch the bridge information
- * @return {[type]} [description]
- */
-export const fetchBridge = () => {
-	return makeRequest('GET', 'https://www.meethue.com/api/nupnp')
-}
-
-/**
  * Authenticate to the bridge
  * @return {[type]} [description]
  */
@@ -82,10 +74,25 @@ export const authenticate = () => {
 }
 
 /**
+ * Fetch the bridge information
+ * @return {[type]} [description]
+ */
+export const fetchBridge = () => {
+	return makeRequest('GET', 'https://www.meethue.com/api/nupnp')
+}
+
+/**
  * get every light bounded to the bridge
  * @return {[type]} [description]
  */
 export const fetchLights = () => {
 	const ip = storage.getItem('ipaddress')
-	return makeRequest('GET', 'http://' + ip + '/api')
+	const username = storage.getItem('username')
+	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights')
+}
+
+export const fetchLight = (light) => {
+	const ip = storage.getItem('ipaddress')
+	const username = storage.getItem('username')
+	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights/' + light)
 }
