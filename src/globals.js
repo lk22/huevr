@@ -1,18 +1,36 @@
 import Axios from 'axios'
 const storage = window.localStorage
-console.log(storage.getItem('switcher'))
+
+/**
+ * wrapper around console.log
+ * @param  {Array}  logs [description]
+ * @return {[type]}      [description]
+ */
 export const log = (logs = []) => {
 	logs.forEach((log) => {
 		console.log(log)
 	})
 }
 
+/**
+ * get every item in local storage
+ * @param  {Array}  items [description]
+ * @return {[type]}       [description]
+ */
 export const getStorageItems = (items = []) => {
 	items.forEach((item) => {
-		return window.localStorage.getItem(item)
+		window.localStorage.getItem(item)
 	})
 }
 
+
+/**
+ * Make custom request
+ * @param  {[type]} method [description]
+ * @param  {[type]} url    [description]
+ * @param  {Object} data   [description]
+ * @return {[type]}        [description]
+ */
 const makeRequest = (method, url, data = {}) => {
 	let request
 	switch (method) {
@@ -36,22 +54,41 @@ const makeRequest = (method, url, data = {}) => {
 	return request
 }
 
+/**
+ * Fetch the bridge information
+ * @return {[type]} [description]
+ */
 export const fetchBridge = () => {
 	return makeRequest('GET', 'https://www.meethue.com/api/nupnp')
 }
 
+/**
+ * Authenticate to the bridge
+ * @return {[type]} [description]
+ */
 export const authenticate = () => {
-	const ip = getStorageItems(['ipaddress'])
-	return makeRequest('POST', 'http://' + window.localStorage.getItem('ipaddress') + '/api', {
+	return makeRequest('POST', 'http://' + storage.getItem('ipaddress') + '/api', {
 		"devicetype" : "new_huevr"
 	}).then((response) => {
-		console.log(response)
-		window.localStorage.setItem('username', response.data.username)
+		if(response.data[0].error.length < 1){
+			console.log(response.data[0])
+			window.localStorage.setItem('username', response.data.username)
+		} else {
+			alert(response.data[0].error.message) 
+		}
+		
+	}).catch((err) => {
+		if( err.message === 'link button not pressed' ) {
+			alert (err.message)
+		}
 	})
 }
 
+/**
+ * get every light bounded to the bridge
+ * @return {[type]} [description]
+ */
 export const fetchLights = () => {
-	const ip = getStorageItems(['ipaddress'])
+	const ip = storage.getItem('ipaddress')
 	return makeRequest('GET', 'http://' + ip + '/api')
 }
-
