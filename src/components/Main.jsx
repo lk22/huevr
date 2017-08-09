@@ -34,26 +34,28 @@ export default class Main extends Component {
 		super(props);
 
 		this.state = {
-			ip: '0.0.0.0',
-			id: null
+			ip: '' + window.localStorage.getItem('ipaddress') + '',
+			id: '' + window.localStorage.getItem('bridgeID') + '',
 		}
 
 		console.log(window.localStorage.ipaddress)
+		if(!window.localStorage.getItem('ipaddress')) {
+			fetchBridge().then((bridge) => {
+				console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
 
-		fetchBridge().then((bridge) => {
-			console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
+				this.setState({
+					ip: bridge.data[0].internalipaddress,
+					id: bridge.data[0].id
+				})
 
-			this.setState({
-				ip: bridge.data[0].internalipaddress,
-				id: bridge.data[0].id
+				if (!window.localStorage.getItem('username') || !window.localStorage.getItem('ipaddress') === this.state.ip){
+					authenticate()
+				}
+			
+				window.localStorage.setItem('ipaddress', this.state.ip);
+				window.localStorage.setItem('bridgeID', this.state.id)
 			})
-
-			if (!window.localStorage.getItem('username') || !window.localStorage.getItem('ipaddress') === this.state.ip){
-				authenticate()
-			}
-		
-			window.localStorage.setItem('ipaddress', this.state.ip);
-		})
+		}
 
 		getStorageItems(['ipaddress'])
 	}

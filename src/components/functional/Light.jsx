@@ -6,7 +6,7 @@ import {Link, Router, Route} from 'react-router-dom'
 /**
  * globals
  */
-import {fetchLight} from './../../globals.js'
+import {fetchLight, updateLight} from './../../globals.js'
 
 // stateless components
 import Header from './../stateless/Header.jsx'
@@ -34,7 +34,10 @@ export default class Light extends Component {
 		this.state = {
 			light: {
 				data: {},
-				state: {}
+				state: {},
+				bri: {},
+				ct: {},
+				hue: {}
 			}
 		}
 	}
@@ -44,8 +47,8 @@ export default class Light extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		console.log("Light: " + this.props.match.params.id + " is loaded")
-		const id = this.props.match.params.id
+		window.localStorage.setItem('lightID', this.props.match.params.id)
+		const id = window.localStorage.getItem('lightID')
 		this.fetchLight(id)
 	}
 
@@ -66,9 +69,22 @@ export default class Light extends Component {
 		})
 	}
 
+	changeBrightness(e) {
+		const bri = this.state.light.state.bri
+		this.setState({
+			bri: e.target.value
+		})
+		e.preventDefault()
+		console.log(e.target.value)
+		Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+			"bri": e.target.value
+		})
+	}
+
 	light() {
 		const light = this.state.light.data
 		const state = this.state.light.state
+		console.log(this.state.light)
 		return (
 			<div className="light-single">
 				<div className="light-name">{light.name}</div>
@@ -76,10 +92,27 @@ export default class Light extends Component {
 				<h4 className="light-model_id">ModelID: {light.modelid}</h4>
 				<h4 className="light-type">Type: {light.type}</h4>
 				<h4 className="light-state-on">{state.on === true ? 'light is on' : 'light is off'}</h4>
-				<ColorSlider brightness={state.bri} contrast={state.ct} hue={state.hue}/>
+
+				<div className="light-config-form">
+					<form action="#">
+						<div className="form-group">
+							<label htmlFor="brightness">Brightness</label>
+							<input type="range" onChange={this.changeBrightness.bind(this)} min="1" max="255" value={state.bri}/>
+						</div>
+
+						<div className="form-group">
+							<label htmlFor="contrast">Contrast</label>
+							<input type="range" min="1" max="255" value={state.ct}/>
+						</div>
+
+						<div className="form-group">
+							<label htmlFor="hue">Hue</label>
+							<input type="range" min="1" max="65554" value={state.hue}/>
+						</div>
+					</form>
+				</div>
 			</div>
 		)
-		
 	}
 
 	/**
@@ -87,7 +120,6 @@ export default class Light extends Component {
 	 * @return {[type]} [description]
 	 */
 	render() {
-		const param = this.props.match.params
 		return(
 			<div className="lightWrapper">
 				<Header />
@@ -105,3 +137,5 @@ export default class Light extends Component {
 		) 
 	}	
 }
+
+// <ColorSlider brightness={state.bri} contrast={state.ct} hue={state.hue}/>

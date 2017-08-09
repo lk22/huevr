@@ -99,7 +99,7 @@ export default class Lights extends Component {
 				<div className="content container-fluid">
 					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">
-						<h2 className="text-center">Lights Configuration</h2>
+						<h2 className="text-left">Lights Configuration</h2>
 						<hr/>
 						<div className="container lights-list">
 							{this.list()} 
