@@ -96,3 +96,11 @@ export const fetchLight = (light) => {
 	const username = storage.getItem('username')
 	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights/' + light)
 }
+
+export const updateBrightness = (brightness, light) => {
+	const ip = storage.getItem('ipaddress')
+	const username = storage.getItem('username')
+	return makeRequest('PUT', 'http://' + ip + '/api/' + username + '/lights/state', {
+		"bri": brightness
+	})
+}

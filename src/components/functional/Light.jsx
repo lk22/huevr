@@ -11,8 +11,14 @@ import {fetchLight} from './../../globals.js'
 // stateless components
 import Header from './../stateless/Header.jsx'
 import Sidebar from './../stateless/Sidebar.jsx'
+
 // Light Components
 import LightItem from './../lights/LightItem.jsx'
+
+/**
+ * form components
+ */
+import ColorSlider from './../lights/forms/ColorSlider.jsx'
 
 // Single light component
 export default class Light extends Component {
@@ -49,7 +55,6 @@ export default class Light extends Component {
 		
 		fetchLight(light).then((response) => {
 			const data = response.data
-			console.log(data)
 			const state = response.data.state
 
 			this.setState({
@@ -71,6 +76,7 @@ export default class Light extends Component {
 				<h4 className="light-model_id">ModelID: {light.modelid}</h4>
 				<h4 className="light-type">Type: {light.type}</h4>
 				<h4 className="light-state-on">{state.on === true ? 'light is on' : 'light is off'}</h4>
+				<ColorSlider brightness={state.bri} contrast={state.ct} hue={state.hue}/>
 			</div>
 		)
 		
