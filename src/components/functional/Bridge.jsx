@@ -22,7 +22,6 @@ export default class Bridge extends Component {
 	 */
 	componentDidMount() {
 		console.log("bridge component is mounted")
-
 	}
 
 	/**

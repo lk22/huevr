@@ -1,4 +1,5 @@
 import Axios from 'axios'
+
 const storage = window.localStorage
 console.log(storage)
 
@@ -68,6 +69,11 @@ export const authorize = () => {
 	}).then((response) => {
 		console.log(response)
 		const username = response.data[0].success.username
+
+		if( !username ) {
+
+		}
+
 		storage.setItem('username', username)
 		console.log(storage.getItem('username'))
 	}).catch((err) => {

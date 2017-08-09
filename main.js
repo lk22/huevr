@@ -1,6 +1,7 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
+const {dialog} = require('electron')
 
 let window
 
@@ -14,16 +15,10 @@ const createWindow = () => {
 
 	window.openDevTools()
 	if(process.env.NODE_ENV === 'development') {
-		 	const electronHot = require('electron-hot-loader');
-		    electronHot.install();
-		    electronHot.watchJsx(['src/main.jsx']);
-		    electronHot.watchCss(['src/**/*.css']);
+	 	const electronHot = require('electron-hot-loader');
+	    electronHot.install();
+	    electronHot.watchJsx(['src/main.jsx']);
+	    electronHot.watchCss(['src/**/*.css']);
 	}
 }
-console.log()
-
 app.on('ready', createWindow)
-
-app.on('will-quit', () => {
-	window.localStorage.clear()
-})
