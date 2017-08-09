@@ -52,6 +52,10 @@ export default class Light extends Component {
 		this.fetchLight(id)
 	}
 
+	componentWillUnmount() {
+		window.localStorage.removeItem('lightID')
+	}
+
 	fetchLight(light) {
 		const ip = window.localStorage.getItem('ipaddress')
 		const username = window.localStorage.getItem('username')
@@ -63,22 +67,30 @@ export default class Light extends Component {
 			this.setState({
 				light: {
 					data,
-					state: data.state
+					state: data.state,
+					bri: data.state.bri,
+					ct: data.state.ct,
+					hue: data.state.hue
 				}
 			})
 		})
 	}
 
 	changeBrightness(e) {
-		const bri = this.state.light.state.bri
-		this.setState({
-			bri: e.target.value
-		})
 		e.preventDefault()
-		console.log(e.target.value)
+		this.state.light.bri = e.target.value
+		console.log(this.state.light.bri)
 		Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-			"bri": e.target.value
+			"bri": this.state.bri
 		})
+	}
+
+	changeContrast(e) {
+		
+	}
+
+	changeHue(e) {
+
 	}
 
 	light() {
@@ -97,17 +109,17 @@ export default class Light extends Component {
 					<form action="#">
 						<div className="form-group">
 							<label htmlFor="brightness">Brightness</label>
-							<input type="range" onChange={this.changeBrightness.bind(this)} min="1" max="255" value={state.bri}/>
+							<input type="range" onChange={this.changeBrightness.bind(this)} min="1" max="255" value={this.state.light.bri}/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="contrast">Contrast</label>
-							<input type="range" min="1" max="255" value={state.ct}/>
+							<input type="range" onChange={this.changeContrast.bind(this)} min="1" max="255" value={this.state.light.ct}/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="hue">Hue</label>
-							<input type="range" min="1" max="65554" value={state.hue}/>
+							<input type="range" onChange={this.changeHue.bind(this)} min="1" max="65554" value={this.state.light.hue}/>
 						</div>
 					</form>
 				</div>

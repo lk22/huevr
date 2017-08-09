@@ -9,7 +9,7 @@ import {
 	log,
  	fetchBridge,
  	getStorageItems,
- 	authenticate
+ 	authorize
 } from './../globals.js'
 
 // stateless components
@@ -39,7 +39,7 @@ export default class Main extends Component {
 		}
 
 		console.log(window.localStorage.ipaddress)
-		if(!window.localStorage.getItem('ipaddress')) {
+
 			fetchBridge().then((bridge) => {
 				console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
 
@@ -49,13 +49,12 @@ export default class Main extends Component {
 				})
 
 				if (!window.localStorage.getItem('username') || !window.localStorage.getItem('ipaddress') === this.state.ip){
-					authenticate()
+					authorize() // authorize user with new given username
 				}
 			
 				window.localStorage.setItem('ipaddress', this.state.ip);
 				window.localStorage.setItem('bridgeID', this.state.id)
 			})
-		}
 
 		getStorageItems(['ipaddress'])
 	}

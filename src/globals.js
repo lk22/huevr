@@ -1,5 +1,6 @@
 import Axios from 'axios'
 const storage = window.localStorage
+console.log(storage)
 
 /**
  * wrapper around console.log
@@ -23,6 +24,9 @@ export const getStorageItems = (items = []) => {
 	})
 }
 
+export const clearStorage = () => {
+	return window.localStorage.clear()
+}
 
 /**
  * Make custom request
@@ -58,7 +62,7 @@ const makeRequest = (method, url, data = {}) => {
  * Authenticate to the bridge
  * @return {[type]} [description]
  */
-export const authenticate = () => {
+export const authorize = () => {
 	return makeRequest('POST', 'http://' + storage.getItem('ipaddress') + '/api', {
 		"devicetype" : "new_huevr"
 	}).then((response) => {

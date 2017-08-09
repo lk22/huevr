@@ -1,5 +1,6 @@
 // Dependencies
 import React, {Component} from 'react'
+import {clearStorage} from './../../globals.js'
 
 /**
  * Bridge Component
@@ -21,6 +22,7 @@ export default class Bridge extends Component {
 	 */
 	componentDidMount() {
 		console.log("bridge component is mounted")
+
 	}
 
 	/**
