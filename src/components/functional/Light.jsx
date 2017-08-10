@@ -6,7 +6,7 @@ import {Link, Router, Route} from 'react-router-dom'
 /**
  * globals
  */
-import {fetchLight, updateLight} from './../../globals.js'
+import {fetchLight, updateLight, log} from './../../globals.js'
 
 // stateless components
 import Header from './../stateless/Header.jsx'
@@ -31,12 +31,25 @@ export default class Light extends Component {
 	constructor(props) {
 		super(props);
 
+		// setup initial state 
 		this.state = {
+
+			// light => {}
 			light: {
+
+				// data object
 				data: {},
+
+				// state object
 				state: {},
+
+				// brightness object
 				bri: {},
+
+				// contrast object
 				ct: {},
+
+				// hue object
 				hue: {}
 			}
 		}
@@ -47,43 +60,91 @@ export default class Light extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		window.localStorage.setItem('lightID', this.props.match.params.id)
-		const id = window.localStorage.getItem('lightID')
-		this.fetchLight(id)
+
+		// store the id of the light bulb
+		
+			window.localStorage.setItem('lightID', this.props.match.params.id)
+
+		// then grab the stored id
+		
+			const id = window.localStorage.getItem('lightID')
+
+		// fetch the light with stored id
+		
+			this.fetchLight(id)
 	}
 
+	/**
+	 * When the component will mount
+	 * @return {[type]} [description]
+	 */
 	componentWillUnmount() {
+
+		// remove the stored id of the light bulb
 		window.localStorage.removeItem('lightID')
 	}
 
+	/**
+	 * fetch the light with curtain id
+	 * @param  {[type]} light [description]
+	 * @return {[type]}       [description]
+	 */
 	fetchLight(light) {
-		const ip = window.localStorage.getItem('ipaddress')
-		const username = window.localStorage.getItem('username')
+
+		// save the 
+		// const ip = window.localStorage.getItem('ipaddress')
+		// // const username = window.localStorage.getItem('username')
 		
+		// fetch light bulb information from api
 		fetchLight(light).then((response) => {
+
+			// save the data object 
 			const data = response.data
+
+			// save the state data
 			const state = response.data.state
 
+			// initialize state with new data
 			this.setState({
+
+				// the light bulb
 				light: {
+
+					// whole data object
 					data,
+
+					// state object
 					state: data.state,
+
+					// brightness value
 					bri: data.state.bri,
+
+					// contrast value 
 					ct: data.state.ct,
+
+					// hue value
 					hue: data.state.hue
 				}
 			})
 		})
 	}
 
+	/**
+	 * Change brightness value to the lightbulb
+	 * @param  {[type]} e [description]
+	 * @return {[type]}   [description]
+	 */
 	changeBrightness(e) {
-		e.preventDefault()
-		this.state.light.bri = e.target.value
-		console.log(this.state.light.bri)
 
-		// Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-		// 	"bri": this.state.bri
-		// })
+		// prevent default action 
+		e.preventDefault()
+
+		// set the brightness value to the value of the changed form element
+		this.state.light.bri = e.target.value
+
+		// log the new stored value
+		log([this.state.light.bri])
+
 	}
 
 	changeContrast(e) {
@@ -94,6 +155,10 @@ export default class Light extends Component {
 		// change Hue coloring here
 	}
 
+	/**
+	 * render the light with requested data
+	 * @return {[type]} [description]
+	 */
 	light() {
 		const light = this.state.light.data
 		const state = this.state.light.state
