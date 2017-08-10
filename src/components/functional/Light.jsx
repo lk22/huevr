@@ -215,5 +215,3 @@ export default class Light extends Component {
 		) 
 	}	
 }
-
-// <ColorSlider brightness={state.bri} contrast={state.ct} hue={state.hue}/>
