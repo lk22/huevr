@@ -6,7 +6,7 @@ import Axios from 'axios'
 /**
  * globals
  */
-import {fetchLights} from './../globals.js'
+import {fetchLights, log} from './../globals.js'
 
 // stateless component
 import Header from './stateless/Header.jsx'
@@ -29,7 +29,10 @@ export default class Lights extends Component {
 	constructor(props) {
 		super(props);
 
+		// setup initial state
 		this.state = {
+
+			// lights array
 			lights: []
 		}
 	}
@@ -39,7 +42,9 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		console.log("light component mounted")
+		log(["light component mounted"])
+
+		// get all the lights
 		this.getLights();
 	}
 
@@ -48,26 +53,35 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	getLights() {
-		// console.log(ip)
-		fetchLights().then((response) => {
-		 	// console.log(response)
-			const data = response.data;	
 
-			// define the lights and convert data to array keys
-			const lights = Object.keys(data).map((id) => {
+		// check if the authorization username exists
+		if(window.localStorage.getItem('username')) {
 
-				// assign id key
-				return Object.assign(data[id], {
-		
-					// id field => integer
-					id: parseInt(id, 10),
+			// if so, fetch all the lights from API
+			fetchLights().then((response) => {
+			 	// console.log(response)
+				const data = response.data;	
+
+				// define the lights and convert data to array keys
+				const lights = Object.keys(data).map((id) => {
+
+					// assign id key
+					return Object.assign(data[id], {
+			
+						// id field => integer
+						id: parseInt(id, 10),
+					})
+				})
+
+
+				// add the lights to the state
+				this.setState({
+
+					// with the new lights data
+					lights
 				})
 			})
-
-			this.setState({
-				lights
-			})
-		})
+		} 
 	}
 
 	/**
@@ -75,6 +89,8 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	list() {
+
+		// render the list of light items
 		return this.state.lights.map((light, index) => {
 			return (
 			   <LightItem
