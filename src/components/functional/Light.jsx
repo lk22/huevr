@@ -80,17 +80,18 @@ export default class Light extends Component {
 		e.preventDefault()
 		this.state.light.bri = e.target.value
 		console.log(this.state.light.bri)
-		Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-			"bri": this.state.bri
-		})
+
+		// Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+		// 	"bri": this.state.bri
+		// })
 	}
 
 	changeContrast(e) {
-		
+		// change contrast here
 	}
 
 	changeHue(e) {
-
+		// change Hue coloring here
 	}
 
 	light() {

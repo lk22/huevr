@@ -1,4 +1,7 @@
 import Axios from 'axios'
+// const {remote} = require('electron')
+
+// const dialog = remote.require('fs')
 
 const storage = window.localStorage
 console.log(storage)
@@ -21,10 +24,16 @@ export const log = (logs = []) => {
  */
 export const getStorageItems = (items = []) => {
 	items.forEach((item) => {
-		window.localStorage.getItem(item)
+		return window.localStorage.getItem(item)
 	})
 }
 
+getStorageItems(['ipaddress'])
+
+/**
+ * clear the storage
+ * @return {[type]} [description]
+ */
 export const clearStorage = () => {
 	return window.localStorage.clear()
 }
@@ -64,18 +73,17 @@ const makeRequest = (method, url, data = {}) => {
  * @return {[type]} [description]
  */
 export const authorize = () => {
+	console.log("ip address " + storage.getItem('ipaddress'))
 	return makeRequest('POST', 'http://' + storage.getItem('ipaddress') + '/api', {
 		"devicetype" : "new_huevr"
 	}).then((response) => {
 		console.log(response)
-		const username = response.data[0].success.username
 
-		if( !username ) {
-
-		}
-
-		storage.setItem('username', username)
-		console.log(storage.getItem('username'))
+		if( response.data[0].success.username ) {
+			const username = response.data[0].success.username
+			storage.setItem('username', username)
+			console.log(storage.getItem('username'))
+		} 
 	}).catch((err) => {
 		if( err.description === 'link button not pressed' ) {
 			alert (err.description)
@@ -101,16 +109,27 @@ export const fetchLights = () => {
 	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights')
 }
 
+/**
+ * fetch single light bulb 
+ * @param  {[type]} light [description]
+ * @return {[type]}       [description]
+ */
 export const fetchLight = (light) => {
 	const ip = storage.getItem('ipaddress')
 	const username = storage.getItem('username')
 	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights/' + light)
 }
 
-export const updateLight = (light, brightness) => {
+/**
+ * [description]
+ * @param  {[type]} light      [description]
+ * @param  {[type]} brightness [description]
+ * @return {[type]}            [description]
+ */
+export const updateLight = (light, state, value) => {
 	const ip = storage.getItem('ipaddress')
 	const username = storage.getItem('username')
 	return makeRequest('PUT', 'http://' + ip + '/api/' + username + '/lights/' + light + '/state', {
-		"bri": brightness
+		state: value
 	})
 }

@@ -17,9 +17,9 @@ export default class NotFoundComponent extends Component {
 	render() {
 		return (
 			<div className="NotFound">
-				<h4>We could find any data about your {this.props.component}</h4>
+				<h4>We could not find any data about your {this.props.component}</h4>
 				<hr/>
-				
+
 				<h4>things to do: </h4>
 				<h5>Use a connection with a bound bridge.</h5>
 				<h5>Click your link button on the bridge (U may not be succesfully authorized).</h5>

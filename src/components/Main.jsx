@@ -5,6 +5,10 @@ import {
 	Switch,
  	Route
 } from 'react-router-dom'
+
+/**
+ * globals
+ */
 import {
 	log,
  	fetchBridge,
@@ -33,28 +37,50 @@ export default class Main extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			ip: '' + window.localStorage.getItem('ipaddress') + '',
-			id: '' + window.localStorage.getItem('bridgeID') + '',
-		}
+		// clear storage
+		window.localStorage.clear()
 
-		console.log(window.localStorage.ipaddress)
+		this.state = {}
 
+		// if the stored bridge ip address is the same as the state stored ip address
+		if(!getStorageItems(['ipaddress'])) {
+
+			// fetch information about hue bridge
 			fetchBridge().then((bridge) => {
-				console.log("Bridge ip address: " + bridge.data[0].internalipaddress)
 
+				// log the ip address to console
+				log(["Bridge ip address: " + bridge.data[0].internalipaddress])
+
+				// set the id and ip address to component state				
 				this.setState({
+
+					// Bridge ip address
 					ip: bridge.data[0].internalipaddress,
+
+					// Bridge id 
 					id: bridge.data[0].id
+
+
 				})
 
-				if (!window.localStorage.username || !window.localStorage.ipaddress === this.state.ip){
-					authorize() // authorize user with new given username
-				}
-			
-				window.localStorage.setItem('ipaddress', this.state.ip);
+				// save the information in local storage
+				window.localStorage.setItem('ipaddress', this.state.ip)
 				window.localStorage.setItem('bridgeID', this.state.id)
+
+
+				// if author username dosen't exist 
+				if (!window.localStorage.username){
+
+					// authorize the client 
+					authorize() // authorize user with new given username
+
+
+				}
 			})
+
+			log([window.localStorage])
+		}
+			
 
 		getStorageItems(['ipaddress'])
 	}
@@ -64,9 +90,9 @@ export default class Main extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
+
 		log([
-			"App is mounted",
-			this.state
+			"App is mounted"
 		])
 	}
 
@@ -93,10 +119,8 @@ export default class Main extends Component {
 		return (
 			<div className="mainWrapper">
 				<Header />
-
 				<div className="content container-fluid">
 					<Sidebar />
-
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
  					</div>

@@ -48,8 +48,7 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	getLights() {
-		console.log(ip)
-		if(username)
+		// console.log(ip)
 		fetchLights().then((response) => {
 		 	// console.log(response)
 			const data = response.data;	
