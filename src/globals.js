@@ -28,8 +28,6 @@ export const getStorageItems = (items = []) => {
 	})
 }
 
-getStorageItems(['ipaddress'])
-
 /**
  * clear the storage
  * @return {[type]} [description]
@@ -73,19 +71,38 @@ const makeRequest = (method, url, data = {}) => {
  * @return {[type]} [description]
  */
 export const authorize = () => {
-	console.log("ip address " + storage.getItem('ipaddress'))
+	log(["ip address " + storage.getItem('ipaddress')])
+
+	// make post request to the bridge api
 	return makeRequest('POST', 'http://' + storage.getItem('ipaddress') + '/api', {
+
+		// with following authorization parameters
+		// "devicetype"
+		// name of the application => new_huevr
 		"devicetype" : "new_huevr"
 	}).then((response) => {
+
+		// log the response
 		console.log(response)
 
+		// if the username is returned
 		if( response.data[0].success.username ) {
+
+			// save the username 
 			const username = response.data[0].success.username
+
+			// store the username to store
 			storage.setItem('username', username)
-			console.log(storage.getItem('username'))
+
+			// log the username 
+			log([storage.getItem('username')])
 		} 
 	}).catch((err) => {
+
+		// if the error appears 
 		if( err.description === 'link button not pressed' ) {
+
+			// alert the user with the error
 			alert (err.description)
 		}
 	})
@@ -96,7 +113,22 @@ export const authorize = () => {
  * @return {[type]} [description]
  */
 export const fetchBridge = () => {
+
+	// create GET request to www.meethue.com/api/nupnp to fetch information about bridge
 	return makeRequest('GET', 'https://www.meethue.com/api/nupnp')
+}
+
+export const fetchBridgeConfig = () => {
+
+	// get the ip address
+	const ip = storage.getItem('ipaddress')
+
+	// get the authorized username
+	const username = storage.getItem('username')
+	
+	// create GET request to http://<ipaddress>/api/<username>/config
+	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/config')
+
 }
 
 /**
@@ -104,8 +136,14 @@ export const fetchBridge = () => {
  * @return {[type]} [description]
  */
 export const fetchLights = () => {
+
+	// get the ip address of the bridge
 	const ip = storage.getItem('ipaddress')
+
+	// get the username of the bridge
 	const username = storage.getItem('username')
+
+	// make call to lights home API
 	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights')
 }
 
@@ -115,9 +153,51 @@ export const fetchLights = () => {
  * @return {[type]}       [description]
  */
 export const fetchLight = (light) => {
+
+	// get the ip address of the bridge
 	const ip = storage.getItem('ipaddress')
+
+	// get the username of the authorized user
 	const username = storage.getItem('username')
+
+	// make call to lights api to fetch a single light bulb 
 	return makeRequest('GET', 'http://' + ip + '/api/' + username + '/lights/' + light)
+}
+
+/**
+ * updating brightness state on a lightbulb
+ * @param  {[type]} light [description]
+ * @param  {[type]} bri   [description]
+ * @return {[type]}       [description]
+ */
+export const updateBrightness = (light, bri) => {
+	return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', {
+		"bri": bri
+	})
+}
+
+/**
+ * updating contrast state on a lightbulb
+ * @param  {[type]} light [description]
+ * @param  {[type]} ct    [description]
+ * @return {[type]}       [description]
+ */
+export const updateContrast = (light, ct) => {
+	return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', {
+		"ct": ct
+	})
+}
+
+/**
+ * updating hue state on a lightbulb
+ * @param  {[type]} light [description]
+ * @param  {[type]} hue   [description]
+ * @return {[type]}       [description]
+ */
+export const updateHue = (light, hue) => {
+	return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', {
+		"hue": hue
+	})
 }
 
 /**
@@ -127,9 +207,18 @@ export const fetchLight = (light) => {
  * @return {[type]}            [description]
  */
 export const updateLight = (light, state, value) => {
-	const ip = storage.getItem('ipaddress')
-	const username = storage.getItem('username')
-	return makeRequest('PUT', 'http://' + ip + '/api/' + username + '/lights/' + light + '/state', {
-		state: value
-	})
+
+	switch (state) {
+		case "brightness":
+			return updateBrightness(light, value)
+			break;
+
+		case "brightness":
+			return updateContrast(light, value)
+			break;
+
+		case "brightness":
+			return updateHue(light, value)
+			break;
+	}
 }

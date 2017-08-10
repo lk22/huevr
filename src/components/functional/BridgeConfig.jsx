@@ -1,0 +1,49 @@
+/**
+ * Dependencies
+ */
+import React, {Component} from 'react'
+
+/**
+ * Stateless components
+ */
+import Header from './../stateless/Header.jsx'
+import Sidebar from './../stateless/Sidebar.jsx'
+
+/**
+ * Globals
+ */
+import {log, fetchBridgeConfig} from './../../globals.js'
+
+export default class BridgeConfig extends Component {
+	constructor(props) {
+		super(props);
+		
+		if(window.localStorage.getItem('username')) {
+			fetchBridgeConfig().then((response) => {
+				log([
+					response.data[0] // the data response object
+				])
+			})
+		}
+	}
+
+	componentDidMount() {
+		log([ 'Bridge config is mounted' ])
+	}
+
+	render() {
+		return (
+			<div className="BridgeConfigWrapper">
+				<Header />
+				<div className="content container-fluid">
+					<Sidebar />
+					<div className="col-md-9 col-lg-9 pull-right main-content">
+						<h2 className="text-left">Bridge Configurations</h2>
+						<hr/>
+						{username ? <div className="container lights-list">{this.list()}</div> : <NotFoundComponent component="lights"/> }
+					</div>
+				</div> 
+			</div>
+		) 
+	}
+}
