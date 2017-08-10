@@ -30,9 +30,10 @@
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" component={Main}/>
                     <Route path="/lights" component={Lights}/>
-                    <Route exact path="/:id" component={Light}/>
+                    <Route path="/lights/:id" component={Light}/>
+                    <Route exact path="/" component={Main}/>
+                    
                 </Switch>
             </BrowserRouter>
         </Provider>,
