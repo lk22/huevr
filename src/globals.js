@@ -1,7 +1,8 @@
 import Axios from 'axios'
-// const {remote} = require('electron')
+const electron = require('electron')
+const {dialog} = require('electron').remote
+const Notify = require('node-notifier')
 
-// const dialog = remote.require('fs')
 
 const storage = window.localStorage
 
@@ -34,6 +35,21 @@ export const getStorageItems = (items = []) => {
 export const clearStorage = () => {
 	return window.localStorage.clear()
 }
+
+/**
+ * show notifications on specific circumstances
+ * @param  {[type]} title [description]
+ * @param  {Object} body  [description]
+ * @return {[type]}       [description]
+ */
+export const notifyWith = (title, body = {}) => {
+	const notification = new Notification(title, body)
+
+	if(notification.isSupported) {
+		return notification
+	}
+
+} 
 
 /**
  * Make custom request
@@ -85,7 +101,7 @@ export const authorize = () => {
 		console.log(response)
 
 		// if the username is returned
-		if( response.data[0].success.username ) {
+		if( response.data[0].success ) {
 
 			// save the username 
 			const username = response.data[0].success.username
@@ -95,15 +111,18 @@ export const authorize = () => {
 
 			// log the username 
 			log([storage.getItem('username')])
-		} 
+		} else {
+
+			return notifyWith('Auth error occured', {
+				body: 'could not get access to your bridge, "click the link button" and try again'
+			})
+
+		}
+
+		
 	}).catch((err) => {
 
-		// if the error appears 
-		if( err.description === 'link button not pressed' ) {
-
-			// alert the user with the error
-			alert (err.description)
-		}
+		
 	})
 }
 

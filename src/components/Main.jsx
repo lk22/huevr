@@ -6,6 +6,8 @@ import {
  	Route
 } from 'react-router-dom'
 
+
+
 /**
  * globals
  */
@@ -60,7 +62,6 @@ export default class Main extends Component {
 					// Bridge id 
 					id: bridge.data[0].id
 
-
 				})
 
 				// save the information in local storage
@@ -69,7 +70,7 @@ export default class Main extends Component {
 
 
 				// if author username dosen't exist 
-				if (!window.localStorage.username){
+				if (!window.localStorage.getItem('username')){
 
 					// authorize the client 
 					authorize() // authorize user with new given username
@@ -82,7 +83,7 @@ export default class Main extends Component {
 		}
 			
 
-		getStorageItems(['ipaddress'])
+		// getStorageItems(['ipaddress'])
 	}
 
 	/**
