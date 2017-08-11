@@ -1,4 +1,4 @@
-.bridge { background: #34495e; color: #fff; padding: 1.5rem; font-family: var(--font); padding-left:1rem; padding-right:1rem; }
+.bridge { background: #34495e; color: #fff; padding: 1.5rem; font-family: var(--font); padding:5rem; }
 
 .bridge > .row{ padding-left:2rem; padding-right:2rem; }
 
@@ -8,4 +8,7 @@
 .bridge .row > h3, 
 .bridge .row > h4, 
 .bridge .row > h5,
-.bridge .row > h6 { margin-top: 2.5rem; }
+.bridge .row > h6 { font-size:12px; margin-top: 2.5rem; }
+
+.bridge .row > .alert-danger { border-radius: 0px 0px 0px 0px; background: #e74c3c; border: none; color: #fff; }
+.bridge .row .alert-danger > .glyphicon{ font-size: 20px;  }

@@ -1,7 +1,7 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
-const {dialog} = require('electron')
+const {dialog} = require('electron').remote
 
 let window
 let appIsQuitted = false
@@ -16,7 +16,7 @@ const createWindow = () => {
 
 	window.openDevTools()
 
-	dialog.showErrorBox('test', 'test')
+	dialog.showErrorBox("test", "test")
 
 	if(process.env.NODE_ENV === 'development') {
 	 	const electronHot = require('electron-hot-loader');

@@ -43,13 +43,27 @@ export const clearStorage = () => {
  * @return {[type]}       [description]
  */
 export const notifyWith = (title, body = {}) => {
+
+	// get new notification instance
 	const notification = new Notification(title, body)
 
+	// if the notification API is supported
 	if(notification.isSupported) {
+
+		// return the specified notification instance
 		return notification
 	}
-
 } 
+
+/**
+ * Show electron's dialog
+ * @param  {[type]} title [description]
+ * @param  {[type]} body  [description]
+ * @return {[type]}       [description]
+ */
+export const showDialog = (title, body) => {
+	dialog.showErrorBox(title, body)
+}
 
 /**
  * Make custom request

@@ -75,7 +75,6 @@ export default class Main extends Component {
 					// authorize the client 
 					authorize() // authorize user with new given username
 
-
 				}
 			})
 
@@ -116,16 +115,27 @@ export default class Main extends Component {
 	render() {
 
 		const {ip, id} = this.state
+		const username = window.localStorage.getItem('username')
 
 		return (
 			<div className="mainWrapper">
 				<Header />
-				<div className="content container-fluid">
-					<Sidebar />
-					<div className="col-md-9 col-lg-9 pull-right main-content">
-						{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
- 					</div>
-				</div>
+				{username ? (
+					<div className="content container-fluid">
+						<Sidebar />
+						<div className="col-md-9 col-lg-9 pull-right main-content">
+							{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
+	 					</div>
+					</div>
+				) : (
+					<div className="content container-fluid">
+
+						<div className="container" style={{"marginTop": "10rem"}}>
+							{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
+	 					</div>
+					</div>
+				)}
+				
 			</div>
 		)
 	}

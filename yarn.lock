@@ -1423,6 +1423,10 @@ character-parser@^2.1.1:
   dependencies:
     is-regex "^1.0.3"
 
+child_process@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/child_process/-/child_process-1.0.2.tgz#b1f7e7fc73d25e7fd1d455adc94e143830182b5a"
+
 chokidar@^1.4.1, chokidar@^1.5.1, chokidar@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
@@ -3134,7 +3138,7 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-fs@0.0.1-security:
+fs@^0.0.1-security:
   version "0.0.1-security"
   resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
 
@@ -5117,6 +5121,10 @@ ndarray@^1.0.13:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+net@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/net/-/net-1.0.2.tgz#d1757ec9a7fb2371d83cf4755ce3e27e10829388"
 
 netmask@~1.0.4:
   version "1.0.6"
