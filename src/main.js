@@ -21,6 +21,7 @@
     import Main from './components/Main.jsx'
     import Lights from './components/Lights.jsx'
     import Light from './components/functional/Light.jsx'
+    import BridgeConfig from './components/functional/BridgeConfig.jsx'
 
 /**
  *  Defining routes 
@@ -30,6 +31,7 @@
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
+                    <Route path="/config" component={BridgeConfig}/>
                     <Route path="/lights" component={Lights}/>
                     <Route path="/lights/:id" component={Light}/>
                     <Route exact path="/" component={Main}/>

@@ -1,7 +1,7 @@
 :root {
 	--background-one: #F6F7F9;
 	--background-two: #004e92;
-	--font: 'Chivo';
+	--font: 'Roboto', sans-serif;
 	--color: #000;
 	--style-type: none;
 	--radius: 5px 5px 5px 5px;

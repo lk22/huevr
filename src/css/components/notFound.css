@@ -1,2 +1,2 @@
-.NotFound{ min-height:100px; background: #c0392b; color: #fff; width: 100%; padding: 2rem; border: 5px solid #e74c3c; } 
+.NotFound{ font-family: var(--font); min-height:100px; background: #c0392b; color: #fff; width: 100%; padding: 2rem; border: 5px solid #e74c3c; } 
 .NotFound > h4{text-transform: uppercase;}

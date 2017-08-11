@@ -54,7 +54,7 @@ module.exports = {
             //   },
               loader: 'babel-loader',
               query: {
-                presets: ['es2015', 'stage-2', 'react']
+                presets: ['es2015', 'es2017', 'stage-2', 'react']
               }
             },
           ],
@@ -85,6 +85,7 @@ module.exports = {
     //       formatter: require('eslint-friendly-formatter')
     //     }
     //   },
+    
       // {
       //   test: /\.vue$/,
       //   loader: 'vue-loader',

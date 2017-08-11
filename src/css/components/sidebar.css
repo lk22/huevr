@@ -1,4 +1,4 @@
-.Sidebar{ /*height: 740px;*/ font-family: 'Chivo'; padding:0rem; left: 0px; top:70px; background: #F6F7F9; padding:2rem; margin-top:1rem; }
+.Sidebar{ /*height: 740px;*/ font-family: var(--font); padding:0rem; left: 0px; top:70px; background: #F6F7F9; padding:2rem; margin-top:1rem; }
 
 .Sidebar > .nav-list{ padding-left:1.5rem; }
 

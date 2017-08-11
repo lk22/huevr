@@ -4,7 +4,6 @@ import Axios from 'axios'
 // const dialog = remote.require('fs')
 
 const storage = window.localStorage
-console.log(storage)
 
 /**
  * wrapper around console.log

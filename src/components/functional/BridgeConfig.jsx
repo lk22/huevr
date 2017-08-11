@@ -8,6 +8,7 @@ import React, {Component} from 'react'
  */
 import Header from './../stateless/Header.jsx'
 import Sidebar from './../stateless/Sidebar.jsx'
+import NotFoundComponent from './../stateless/NotFoundComponent.jsx'
 
 /**
  * Globals
@@ -32,6 +33,7 @@ export default class BridgeConfig extends Component {
 	}
 
 	render() {
+		const username = window.localStorage.getItem('username')
 		return (
 			<div className="BridgeConfigWrapper">
 				<Header />
@@ -40,7 +42,7 @@ export default class BridgeConfig extends Component {
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						<h2 className="text-left">Bridge Configurations</h2>
 						<hr/>
-						{username ? <div className="container lights-list">{this.list()}</div> : <NotFoundComponent component="lights"/> }
+						{username ? <div className="container lights-list">{this.list()}</div> : <NotFoundComponent component="Bridge Configuration"/> }
 					</div>
 				</div> 
 			</div>

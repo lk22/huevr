@@ -1,5 +1,10 @@
 // Dependencies
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+
+/**
+ * global functions
+ */
 import {clearStorage} from './../../globals.js'
 
 /**
@@ -36,6 +41,7 @@ export default class Bridge extends Component {
 				<div className="row">
 					<h5>Internal IP Address: {this.props.ip}</h5>
 					<h5>Bridge id: {this.props.id}</h5>
+					<Link to="/config" className="btn btn-primary">Go to config</Link>
 				</div>
 			</div>
 		)
