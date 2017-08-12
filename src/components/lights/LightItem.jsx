@@ -33,7 +33,7 @@ export default class LightItem extends Component {
 		console.log(props)
 		return(
 			<div className="row light">
-				<h4 className="light-name"><Link to={"/lights/" + props.data.id}>{props.data.name}</Link></h4>
+				<h4 className="light-name"><Link to={"/" + props.data.id}>{props.data.name}</Link></h4>
 				
 				<h4 className="light-manufacturer">Manufacturer: {props.data.manufacturername}</h4>
 				<h4 className="light-model_id">ModelID: {props.data.modelid}</h4>

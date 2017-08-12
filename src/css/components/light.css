@@ -1,11 +1,7 @@
-.light{ min-height:150px; font-size:15px; padding: 1rem; width: 79%; }
-.light:hover{background: #3498db; color: #fff; transition: ease-in-out 0.2s all;}
-.light:not(:hover){transition: ease-in-out 0.2s all;}
+.light{ background: #F6F7F9; min-height:150px; font-size:15px; padding: 1rem; width: 79%; font-size: 20px; margin-top: 1rem;}
 
-.light > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase;}
-.light .light-name > a{color: #fff;}
-.light > .light-name:hover{ background: #3498db; transition: ease-in-out 0.2s all; }
-.light > .light-name:not(:hover) { transition:ease-in-out 0.2s all; }
+.light > .light-name{ background: #fff; height:60px; padding:2.2rem; color: #000; text-transform: uppercase; font-size: 20px;}
+.light .light-name > a{color: #000; font-size:15px;}
 
 .light > .light-state-on,
 .light > .light-manufacturer,
@@ -13,14 +9,13 @@
 .light > .light-alert,
 .light > .light-model_id{ font-size:15px; padding: 1.2rem;} 
 
-
 /**
  * single light
  */
 
-.light-single{ color: #fff; background: #3498db; min-height: 150px; font-size:15; padding:1rem; width:79% }
+.light-single{ color: #000; background: #F6F7F9; min-height: 150px; font-size:15; padding:1rem; width:79% }
 
-.light-single > .light-name{ background: #1D6ECB; height:60px; padding:2.2rem; color: #fff; text-transform: uppercase; color:#fff;}
+.light-single > .light-name{ background: #fff; height:60px; padding:2.2rem; text-transform: uppercase; color:#000;}
 .light-single > .light-manufacturer,
 .light-single > .light-model_id,
 .light-single > .light-type,

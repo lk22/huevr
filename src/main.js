@@ -33,7 +33,7 @@
                 <Switch>
                     <Route path="/config" component={BridgeConfig}/>
                     <Route path="/lights" component={Lights}/>
-                    <Route path="/lights/:id" component={Light}/>
+                    <Route path="/:id" component={Light}/>
                     <Route exact path="/" component={Main}/>
                     
                 </Switch>
