@@ -32,8 +32,10 @@ export const getStorageItems = (items = []) => {
  * clear the storage
  * @return {[type]} [description]
  */
-export const clearStorage = () => {
-	return window.localStorage.clear()
+export const clearStorageItems = (items = []) => {
+	items.forEach((item) => {
+		return window.localStorage.removeItem(item)
+	})
 }
 
 /**
@@ -111,9 +113,6 @@ export const authorize = () => {
 		"devicetype" : "new_huevr"
 	}).then((response) => {
 
-		// log the response
-		console.log(response)
-
 		// if the username is returned
 		if( response.data[0].success ) {
 
@@ -125,8 +124,18 @@ export const authorize = () => {
 
 			// log the username 
 			log([storage.getItem('username')])
+
+			return notifyWith('Authorization Succeeded', {
+				body: 'You authorized to your bridge with success username: ' + storage.getItem('username')
+			})
+
+			// // reload page
+			// window.location.reload()
 		} else {
 
+			// if the username is not found in response 
+			
+			// notify authorization error
 			return notifyWith('Auth error occured', {
 				body: 'could not get access to your bridge, "click the link button" and try again'
 			})

@@ -6,8 +6,6 @@ import {
  	Route
 } from 'react-router-dom'
 
-
-
 /**
  * globals
  */
@@ -15,7 +13,8 @@ import {
 	log,
  	fetchBridge,
  	getStorageItems,
- 	authorize
+ 	authorize,
+ 	notifyWith
 } from './../globals.js'
 
 // stateless components
@@ -40,12 +39,9 @@ export default class Main extends Component {
 		super(props);
 
 		// clear storage
-		window.localStorage.clear()
+		
 
 		this.state = {}
-
-		// if the stored bridge ip address is the same as the state stored ip address
-		if(!getStorageItems(['ipaddress'])) {
 
 			// fetch information about hue bridge
 			fetchBridge().then((bridge) => {
@@ -75,13 +71,15 @@ export default class Main extends Component {
 					// authorize the client 
 					authorize() // authorize user with new given username
 
+				} else {
+					notifyWith('Welcome Back', {
+						body: 'Welcome back, good to see you again'
+					})
 				}
 			})
 
 			log([window.localStorage])
-		}
 			
-
 		// getStorageItems(['ipaddress'])
 	}
 
@@ -103,7 +101,7 @@ export default class Main extends Component {
 	showLoading() {
 		return (
 			<div className="loading">
-				<h2>Loading...</h2>
+				<h2>Authorizing...</h2>
 			</div>
 		)
 	}
@@ -119,22 +117,14 @@ export default class Main extends Component {
 
 		return (
 			<div className="mainWrapper">
-				<Header />
-				{username ? (
+
 					<div className="content container-fluid">
 						<Sidebar />
 						<div className="col-md-9 col-lg-9 pull-right main-content">
 							{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
 	 					</div>
 					</div>
-				) : (
-					<div className="content container-fluid">
-
-						<div className="container" style={{"marginTop": "10rem"}}>
-							{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
-	 					</div>
-					</div>
-				)}
+				
 				
 			</div>
 		)
