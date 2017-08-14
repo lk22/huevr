@@ -18,7 +18,6 @@ import {
 } from './../globals.js'
 
 // stateless components
-import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 

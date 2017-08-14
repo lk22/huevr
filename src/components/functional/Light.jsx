@@ -10,7 +10,6 @@ import {Link, Router, Route} from 'react-router-dom'
 import {fetchLight, updateLight, log} from './../../globals.js'
 
 // stateless components
-import Header from './../stateless/Header.jsx'
 import Sidebar from './../stateless/Sidebar.jsx'
 
 // Light Components
@@ -32,6 +31,9 @@ export default class Light extends Component {
 	constructor(props) {
 		super(props);
 
+		this.storage = window.localStorage
+		
+
 		// setup initial state 
 		this.state = {
 
@@ -45,13 +47,13 @@ export default class Light extends Component {
 				state: {},
 
 				// brightness object
-				bri: {},
+				bri: 0,
 
 				// contrast object
-				ct: {},
+				ct: 0,
 
 				// hue object
-				hue: {}
+				hue: 0
 			}
 		}
 	}
@@ -142,9 +144,10 @@ export default class Light extends Component {
 
 		// set the brightness value to the value of the changed form element
 		this.state.light.bri = e.target.value
+		log(['Brightness state:  ' + this.state.light.bri, this.state.light])
 
-		// log the new stored value
-		log([this.state.light.bri])
+		// updateLight(window.localStorage.getItem('lightID'), 'brightness', e.target.value)
+		return updateLight(window.localStorage.getItem('lightID'), 'brightness', this.state.light.bri)
 
 	}
 
@@ -156,6 +159,18 @@ export default class Light extends Component {
 		// change Hue coloring here
 	}
 
+	updateRed(e) {
+		log([this.storage])
+
+		
+	}
+
+	updateBlue(e) {
+		log([this.storage])
+
+		
+	}
+
 	/**
 	 * render the light with requested data
 	 * @return {[type]} [description]
@@ -163,20 +178,25 @@ export default class Light extends Component {
 	light() {
 		const light = this.state.light.data
 		const state = this.state.light.state
+		const Light = document.querySelector('.light-single')
 		console.log(this.state.light)
 		return (
-			<div className="light-single">
-				<div className="light-name">{light.name}</div>
-				<h4 className="light-manufacturer">Manufacturer: {light.manufacturername}</h4>
-				<h4 className="light-model_id">ModelID: {light.modelid}</h4>
-				<h4 className="light-type">Type: {light.type}</h4>
-				<h4 className="light-state-on">{state.on === true ? 'light is on' : 'light is off'}</h4>
+			<div className="light-single" >
+				<div className="light-single__name">{light.name}</div>
+				<h4 className="light-single__manufacturer">Manufacturer: {light.manufacturername}</h4>
+				<h4 className="light-single__model_id">ModelID: {light.modelid}</h4>
+				<h4 className="light-single__type">Type: {light.type}</h4>
+				<h4 className="light-single__state-on">{state.on === true ? <div className="label label-success">light is on</div> : <div className="label label-danger">light is off</div>}</h4>
 
 				<div className="light-config-form">
 					<form action="#">
 						<div className="form-group">
 							<label htmlFor="brightness">Brightness</label>
-							<input type="range" onChange={this.changeBrightness.bind(this)} min="1" max="255" value={this.state.light.bri}/>
+							<input type="range" onChange={(e) => {
+								return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+									"bri": this.state.light.bri
+								})
+							}} min="1" max="255" value={this.state.light.bri}/>
 						</div>
 
 						<div className="form-group">
@@ -190,6 +210,68 @@ export default class Light extends Component {
 						</div>
 					</form>
 				</div>
+
+				<button className="btn btn-danger" onClick={() => {
+					
+					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+						"hue": 65280 
+					}).then((response) => {
+						Light.style.background = '#e74c3c'
+						Light.style.color = '#fff'
+					})	
+
+				}}>Red</button>
+
+				<button className="btn btn-primary" onClick={() => {
+					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+						"hue": 46920 
+					}).then((response) => {
+						Light.style.background = '#3498db'
+
+					})
+				}}>Blue</button>
+
+				<button className="btn btn-success" onClick={() => {
+					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+						"hue": 25500 
+					}).then((response) => {
+						Light.style.background = '#2ecc71'
+						Light.style.color = '#fff'
+					})
+				}}>Green</button>
+
+				<button className="btn btn-warning" onClick={() => {
+					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+						"hue": 12750 
+					}).then((response) => {
+						Light.style.background = '#f1c40f'
+						Light.style.color = '#fff'
+					})
+				}} style={{ backgroundColor: "#f1c40f" }}>Yellow</button>
+
+				<div className="row">
+				{this.state.light.state.on === true ? (
+					<button className="turn-off btn btn-default" onClick={() => {
+						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+							"on": false 
+						}).then((response) => {
+							window.location.reload()
+						})
+					}}>Turn off</button>
+
+					) : (
+					
+					<button className="turn-off btn btn-default" onClick={() => {
+						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+							"on": true 
+						}).then((response) => {
+							window.location.reload()
+						})
+					}}>Turn on</button>
+
+					)}
+					
+				</div>
 			</div>
 		)
 	}
@@ -201,7 +283,6 @@ export default class Light extends Component {
 	render() {
 		return(
 			<div className="lightWrapper">
-				<Header />
 				<div className="content container-fluid">
 					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">
@@ -216,3 +297,4 @@ export default class Light extends Component {
 		) 
 	}	
 }
+// onChange={this.changeBrightness.bind(this)}

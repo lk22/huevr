@@ -1,7 +1,6 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
-const {dialog} = require('electron').remote
 
 let window
 let appIsQuitted = false
@@ -23,12 +22,12 @@ const createWindow = () => {
 	    electronHot.watchCss(['src/**/*.css']);
 	}
 
-	/**
+	/*
 	 * make action if the window is closed
 	 * @param  {[type]} 'close' [description]
 	 * @param  {[type]} (       [description]
 	 * @return {[type]}         [description]
-	 */
+	 * */
 	window.on('close', (e) => {
 		if(!appIsQuitted) {
 			window = null

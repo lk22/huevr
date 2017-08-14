@@ -9,7 +9,6 @@ import Axios from 'axios'
 import {fetchLights, log} from './../globals.js'
 
 // stateless component
-import Header from './stateless/Header.jsx'
 import Sidebar from './stateless/Sidebar.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
@@ -59,6 +58,7 @@ export default class Lights extends Component {
 
 			// if so, fetch all the lights from API
 			fetchLights().then((response) => {
+				
 			 	// console.log(response)
 				const data = response.data;	
 
@@ -109,7 +109,6 @@ export default class Lights extends Component {
 		const username = window.localStorage.username
 		return (
 			<div className="lightsWrapper">
-				<Header />
 				<div className="content container-fluid">
 					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">

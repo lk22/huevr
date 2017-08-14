@@ -22,7 +22,7 @@ body {
 .mainWrapper .content > .main-content,
 .lightsWrapper .content > .main-content,
 .lightWrapper .content > .main-content{
-	min-height: 650px;
+w	min-height: 650px;
 	background: #fff;
 	border-radius: 2px 2px 2px 2px;
 	margin-top:1rem;

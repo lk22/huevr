@@ -38,7 +38,7 @@ export default class Bridge extends Component {
 	render() {
 		return (
 			<div className="row bridge">
-				<h2 style={{fontSize: "20px"}} className="text-left bridge-header">Hue Bridge information</h2>
+				<h2 style={{fontSize: "20px"}} className="text-left bridge__header">Hue Bridge information</h2>
 				<hr/>
 				<div className="row">
 					<h5>Internal IP Address: {this.props.ip}</h5>

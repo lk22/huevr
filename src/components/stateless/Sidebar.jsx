@@ -27,6 +27,9 @@ export default class Sidebar extends Component {
 					<li className="list-item">
 						<Link to="/schedules">Schedules</Link>
 					</li>
+					<li className="list-item">
+						<Link to="/">Home</Link>
+					</li>
 				</ul>
 			</div>
 		)
