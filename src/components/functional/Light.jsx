@@ -32,9 +32,9 @@ export default class Light extends Component {
 		super(props);
 
 		this.storage = window.localStorage
-		
 
-		// setup initial state 
+
+		// setup initial state
 		this.state = {
 
 			// light => {}
@@ -59,21 +59,21 @@ export default class Light extends Component {
 	}
 
 	/**
-	 * Component did mount 
+	 * Component did mount
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
 
 		// store the id of the light bulb
-		
+
 			window.localStorage.setItem('lightID', this.props.match.params.id)
 
 		// then grab the stored id
-		
+
 			const id = window.localStorage.getItem('lightID')
 
 		// fetch the light with stored id
-		
+
 			this.fetchLight(id)
 	}
 
@@ -94,14 +94,14 @@ export default class Light extends Component {
 	 */
 	fetchLight(light) {
 
-		// save the 
+		// save the
 		// const ip = window.localStorage.getItem('ipaddress')
 		// // const username = window.localStorage.getItem('username')
-		
+
 		// fetch light bulb information from api
 		fetchLight(light).then((response) => {
 
-			// save the data object 
+			// save the data object
 			const data = response.data
 
 			// save the state data
@@ -122,7 +122,7 @@ export default class Light extends Component {
 					// brightness value
 					bri: data.state.bri,
 
-					// contrast value 
+					// contrast value
 					ct: data.state.ct,
 
 					// hue value
@@ -139,7 +139,7 @@ export default class Light extends Component {
 	 */
 	changeBrightness(e) {
 
-		// prevent default action 
+		// prevent default action
 		e.preventDefault()
 
 		// set the brightness value to the value of the changed form element
@@ -162,13 +162,13 @@ export default class Light extends Component {
 	updateRed(e) {
 		log([this.storage])
 
-		
+
 	}
 
 	updateBlue(e) {
 		log([this.storage])
 
-		
+
 	}
 
 	/**
@@ -212,28 +212,28 @@ export default class Light extends Component {
 				</div>
 
 				<button className="btn btn-danger" onClick={() => {
-					
+
 					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 65280 
+						"hue": 65280
 					}).then((response) => {
 						Light.style.background = '#e74c3c'
 						Light.style.color = '#fff'
-					})	
+					})
 
 				}}>Red</button>
 
 				<button className="btn btn-primary" onClick={() => {
 					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 46920 
+						"hue": 46920
 					}).then((response) => {
 						Light.style.background = '#3498db'
-
+						Light.style.color = '#fff'
 					})
 				}}>Blue</button>
 
 				<button className="btn btn-success" onClick={() => {
 					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 25500 
+						"hue": 25500
 					}).then((response) => {
 						Light.style.background = '#2ecc71'
 						Light.style.color = '#fff'
@@ -242,7 +242,7 @@ export default class Light extends Component {
 
 				<button className="btn btn-warning" onClick={() => {
 					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 12750 
+						"hue": 12750
 					}).then((response) => {
 						Light.style.background = '#f1c40f'
 						Light.style.color = '#fff'
@@ -253,24 +253,24 @@ export default class Light extends Component {
 				{this.state.light.state.on === true ? (
 					<button className="turn-off btn btn-default" onClick={() => {
 						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"on": false 
+							"on": false
 						}).then((response) => {
 							window.location.reload()
 						})
 					}}>Turn off</button>
 
 					) : (
-					
+
 					<button className="turn-off btn btn-default" onClick={() => {
 						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"on": true 
+							"on": true
 						}).then((response) => {
 							window.location.reload()
 						})
 					}}>Turn on</button>
 
 					)}
-					
+
 				</div>
 			</div>
 		)
@@ -292,9 +292,9 @@ export default class Light extends Component {
 							{this.light()}
 						</div>
 					</div>
-				</div> 
+				</div>
 			</div>
-		) 
-	}	
+		)
+	}
 }
 // onChange={this.changeBrightness.bind(this)}

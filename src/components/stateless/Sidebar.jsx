@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 export default class Sidebar extends Component {
 
 	/**
-	 * Rendering the component 
+	 * Rendering the component
 	 * @return {[type]} [description]
 	 */
 	render() {
@@ -21,12 +21,12 @@ export default class Sidebar extends Component {
 					<li className="list-item">
 						<Link to="/lightgroups">Light groups</Link>
 					</li>
-					<li className="list-item">
+					{/*<li className="list-item">
 						<Link to="/scenes">Scenes</Link>
 					</li>
 					<li className="list-item">
-						<Link to="/schedules">Schedules</Link>
-					</li>
+						<Link to="/schedules">Schedules</Link>*/}
+					{/*</li>*/}
 					<li className="list-item">
 						<Link to="/">Home</Link>
 					</li>
