@@ -5,10 +5,10 @@
 .bridge .row > p,
 .bridge .row > h1,
 .bridge .row > h2,
-.bridge .row > h3, 
-.bridge .row > h4, 
+.bridge .row > h3,
+.bridge .row > h4,
 .bridge .row > h5,
-.bridge .row > h6 { font-size:12px; margin-top: 2.5rem; }
+.bridge .row > h6 { font-size:14px; margin-top: 2.5rem; }
 
 .bridge .row > .alert-danger { border-radius: 0px 0px 0px 0px; background: #e74c3c; border: none; color: #fff; }
 .bridge .row .alert-danger > .glyphicon{ font-size: 20px;  }

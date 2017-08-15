@@ -7,7 +7,7 @@ import {Link, Router, Route} from 'react-router-dom'
 /**
  * globals
  */
-import {fetchLight, updateLight, log} from './../../globals.js'
+import {fetchLight, updateLight, log, notifyWith} from './../../globals.js'
 
 // stateless components
 import Sidebar from './../stateless/Sidebar.jsx'
@@ -188,88 +188,81 @@ export default class Light extends Component {
 				<h4 className="light-single__type">Type: {light.type}</h4>
 				<h4 className="light-single__state-on">{state.on === true ? <div className="label label-success">light is on</div> : <div className="label label-danger">light is off</div>}</h4>
 
-				<div className="light-config-form">
-					<form action="#">
-						<div className="form-group">
-							<label htmlFor="brightness">Brightness</label>
-							<input type="range" onChange={(e) => {
-								return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-									"bri": this.state.light.bri
+				<hr/>
+				<div className="row color-presets">
+					<h3>Color Presets</h3>
+					<button className="btn btn-danger" onClick={() => {
+
+						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+							"hue": 65280
+						}).then((response) => {
+							return notifyWith(light.name, {
+								body: "Color is changed to red"
+							})
+						})
+					}}>Red</button>
+
+					<button className="btn btn-primary" onClick={() => {
+						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+							"hue": 46920
+						}).then((response) => {
+							return notifyWith(light.name, {
+								body: "Color changed to blue"
+							})
+						})
+					}}>Blue</button>
+
+					<button className="btn btn-success" onClick={() => {
+						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+							"hue": 25500
+						}).then((response) => {
+							return notifyWith(light.name, {
+								body: "Color changed to greed"
+							})
+						})
+					}}>Green</button>
+
+					<button className="btn btn-warning" onClick={() => {
+						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+							"hue": 12750
+						}).then((response) => {
+							return notifyWith(light.name, {
+								body: "Color changed to yellow"
+							})
+						})
+					}} style={{ backgroundColor: "#f1c40f" }}>Yellow</button>
+
+					{this.state.light.state.on === true ? (
+						<button className="turn-off btn btn-default" onClick={() => {
+							return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+								"on": false
+							}).then((response) => {
+
+								window.location.reload()
+								return notifyWith(light.name, {
+									body: "Is now turned off."
 								})
-							}} min="1" max="255" value={this.state.light.bri}/>
-						</div>
+							})
+						}}>Turn off</button>
 
-						<div className="form-group">
-							<label htmlFor="contrast">Contrast</label>
-							<input type="range" onChange={this.changeContrast.bind(this)} min="1" max="255" value={this.state.light.ct}/>
-						</div>
+						) : (
 
-						<div className="form-group">
-							<label htmlFor="hue">Hue</label>
-							<input type="range" onChange={this.changeHue.bind(this)} min="1" max="65554" value={this.state.light.hue}/>
-						</div>
-					</form>
-				</div>
+						<button className="turn-off btn btn-default" onClick={() => {
+							return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+								"on": true
+							}).then((response) => {
 
-				<button className="btn btn-danger" onClick={() => {
+								window.location.reload()
+								return notifyWith(light.name, {
+									body: "Is now turned on."
+								})
+							})
+						}}>Turn on</button>
 
-					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 65280
-					}).then((response) => {
-						Light.style.background = '#e74c3c'
-						Light.style.color = '#fff'
-					})
+						)}
 
-				}}>Red</button>
 
-				<button className="btn btn-primary" onClick={() => {
-					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 46920
-					}).then((response) => {
-						Light.style.background = '#3498db'
-						Light.style.color = '#fff'
-					})
-				}}>Blue</button>
 
-				<button className="btn btn-success" onClick={() => {
-					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 25500
-					}).then((response) => {
-						Light.style.background = '#2ecc71'
-						Light.style.color = '#fff'
-					})
-				}}>Green</button>
-
-				<button className="btn btn-warning" onClick={() => {
-					return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-						"hue": 12750
-					}).then((response) => {
-						Light.style.background = '#f1c40f'
-						Light.style.color = '#fff'
-					})
-				}} style={{ backgroundColor: "#f1c40f" }}>Yellow</button>
-
-				<div className="row">
-				{this.state.light.state.on === true ? (
-					<button className="turn-off btn btn-default" onClick={() => {
-						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"on": false
-						}).then((response) => {
-							window.location.reload()
-						})
-					}}>Turn off</button>
-
-					) : (
-
-					<button className="turn-off btn btn-default" onClick={() => {
-						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"on": true
-						}).then((response) => {
-							window.location.reload()
-						})
-					}}>Turn on</button>
-
-					)}
 
 				</div>
 			</div>
