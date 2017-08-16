@@ -12,8 +12,9 @@ import {fetchLight, updateLight, log, notifyWith} from './../../globals.js'
 // stateless components
 import Sidebar from './../stateless/Sidebar.jsx'
 
-// Light Components
+// functional Components
 import LightItem from './../lights/LightItem.jsx'
+import ColorPresetButton from './../lights/ColorPresetButton.jsx'
 
 /**
  * form components
@@ -167,8 +168,6 @@ export default class Light extends Component {
 
 	updateBlue(e) {
 		log([this.storage])
-
-
 	}
 
 	/**
@@ -181,6 +180,7 @@ export default class Light extends Component {
 		const Light = document.querySelector('.light-single')
 		console.log(this.state.light)
 		return (
+
 			<div className="light-single" >
 				<div className="light-single__name">{light.name}</div>
 				<h4 className="light-single__manufacturer">Manufacturer: {light.manufacturername}</h4>
@@ -217,7 +217,7 @@ export default class Light extends Component {
 							"hue": 25500
 						}).then((response) => {
 							return notifyWith(light.name, {
-								body: "Color changed to greed"
+								body: "Color changed to green"
 							})
 						})
 					}}>Green</button>
@@ -231,6 +231,12 @@ export default class Light extends Component {
 							})
 						})
 					}} style={{ backgroundColor: "#f1c40f" }}>Yellow</button>
+
+					<ColorPresetButton
+						name={light.name}
+						light={window.localStorage.getItem('lightID')}
+						color="red"
+					/>
 
 					{this.state.light.state.on === true ? (
 						<button className="turn-off btn btn-default" onClick={() => {
@@ -260,10 +266,6 @@ export default class Light extends Component {
 						}}>Turn on</button>
 
 						)}
-
-
-
-
 				</div>
 			</div>
 		)

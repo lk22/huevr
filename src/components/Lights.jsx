@@ -58,16 +58,16 @@ export default class Lights extends Component {
 
 			// if so, fetch all the lights from API
 			fetchLights().then((response) => {
-				
+
 			 	// console.log(response)
-				const data = response.data;	
+				const data = response.data;
 
 				// define the lights and convert data to array keys
 				const lights = Object.keys(data).map((id) => {
 
 					// assign id key
 					return Object.assign(data[id], {
-			
+
 						// id field => integer
 						id: parseInt(id, 10),
 					})
@@ -81,7 +81,7 @@ export default class Lights extends Component {
 					lights
 				})
 			})
-		} 
+		}
 	}
 
 	/**
@@ -101,7 +101,7 @@ export default class Lights extends Component {
 		})
 	}
 
-	/** 
+	/**
 	 * Rendering the lights list component
 	 * @return {[type]} [description]
 	 */
@@ -116,7 +116,7 @@ export default class Lights extends Component {
 						<hr/>
 						{username ? <div className="container lights-list">{this.list()}</div> : <NotFoundComponent component="lights"/> }
 					</div>
-				</div> 
+				</div>
 			</div>
 		)
 	}

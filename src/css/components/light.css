@@ -22,7 +22,7 @@
 .light-single > .light-single__state-on{ font-size:12px; padding: 1.2rem;  }
 
 .light-single > .color-presets{ padding: 1.5rem;  }
-.light-single .color-presets > .btn { border: none; border-radius: 0px 0px 0px 0px; padding:5rem; margin-left: 3rem; margin-top: 10px;}
-.light-single .color-presets > .btn-default{ display: block; padding:10px; background: #bdc3c7; color : #fff; }
+.light-single .color-presets > .btn { border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px;}
+.light-single .color-presets > .btn-default{ display: block; padding:10px; background: #bdc3c7; color : #fff; border-raius: 0px 0px 0px 0px;}
 .light-single .color-presets > .btn-default:hover{ background: #000; transition: ease-in-out 0.2s all; }
 .light-single .color-presets > .btn-default:not(:hover) { transition: ease-in-out 0.2s all; }
