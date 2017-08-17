@@ -3,7 +3,7 @@ const electron = require('electron')
 const {dialog} = require('electron').remote
 const Notify = require('node-notifier')
 
-
+// local storage wrapper
 const storage = window.localStorage
 
 	/**

@@ -1,28 +1,34 @@
+/* light wrapper  */
 .light{ background: #F6F7F9; min-height:150px; font-size:15px; padding: 1rem; width: 79%; font-size: 20px; margin-top: 1rem;}
 
+/* light name  */
 .light > .light-name{ background: #fff; height:60px; padding:2.2rem; color: #000; text-transform: uppercase; font-size: 20px;}
 .light .light-name > a{color: #000; font-size:15px;}
 
+/* light information */
 .light > .light-state-on,
 .light > .light-manufacturer,
 .light > .light-type,
 .light > .light-alert,
 .light > .light-model_id{ font-size:15px; padding: 1.2rem;}
 
-/**
- * single light
- */
-
+/* single light */
 .light-single{ transition:ease-in-out 0.2s all; color: #000; background: #F6F7F9; min-height: 150px; padding:5rem; width:79% }
-
 .light-single > .light-single__name{ background: #fff; height:60px; padding:2.2rem; text-transform: uppercase; color:#000;}
 .light-single > .light-single__manufacturer,
 .light-single > .light-single__model_id,
 .light-single > .light-single__type,
 .light-single > .light-single__state-on{ font-size:12px; padding: 1.2rem;  }
 
+/* color presets wrapper */
 .light-single > .color-presets{ padding: 1.5rem;  }
-.light-single .color-presets > .btn { border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px;}
-.light-single .color-presets > .btn-default{ display: block; padding:10px; background: #bdc3c7; color : #fff; border-raius: 0px 0px 0px 0px;}
-.light-single .color-presets > .btn-default:hover{ background: #000; transition: ease-in-out 0.2s all; }
-.light-single .color-presets > .btn-default:not(:hover) { transition: ease-in-out 0.2s all; }
+
+/* color preset buttons */
+.light-single .color-presets > .preset-red {background: #e74c3c;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color:#fff;}
+.light-single .color-presets > .preset-blue {background: #3498db;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color: #fff;}
+.light-single .color-presets > .preset-green {background: #2ecc71;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color: #fff;}
+.light-single .color-presets > .preset-yellow {background: #f1c40f;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color: #fff;}
+
+/* light switch button */
+.light-single .color-presets > .turn-on{ background: #ddd; }
+.light-single .color-presets > .turn-on:hover{ background: #ddd; }

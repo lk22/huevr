@@ -34,7 +34,6 @@ export default class Light extends Component {
 
 		this.storage = window.localStorage
 
-
 		// setup initial state
 		this.state = {
 
@@ -191,51 +190,28 @@ export default class Light extends Component {
 				<hr/>
 				<div className="row color-presets">
 					<h3>Color Presets</h3>
-					<button className="btn btn-danger" onClick={() => {
-
-						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"hue": 65280
-						}).then((response) => {
-							return notifyWith(light.name, {
-								body: "Color is changed to red"
-							})
-						})
-					}}>Red</button>
-
-					<button className="btn btn-primary" onClick={() => {
-						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"hue": 46920
-						}).then((response) => {
-							return notifyWith(light.name, {
-								body: "Color changed to blue"
-							})
-						})
-					}}>Blue</button>
-
-					<button className="btn btn-success" onClick={() => {
-						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"hue": 25500
-						}).then((response) => {
-							return notifyWith(light.name, {
-								body: "Color changed to green"
-							})
-						})
-					}}>Green</button>
-
-					<button className="btn btn-warning" onClick={() => {
-						return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-							"hue": 12750
-						}).then((response) => {
-							return notifyWith(light.name, {
-								body: "Color changed to yellow"
-							})
-						})
-					}} style={{ backgroundColor: "#f1c40f" }}>Yellow</button>
-
 					<ColorPresetButton
 						name={light.name}
 						light={window.localStorage.getItem('lightID')}
 						color="red"
+					/>
+
+					<ColorPresetButton
+						name={light.name}
+						light={window.localStorage.getItem('lightID')}
+						color="blue"
+					/>
+
+					<ColorPresetButton
+						name={light.name}
+						light={window.localStorage.getItem('lightID')}
+						color="green"
+					/>
+
+					<ColorPresetButton
+						name={light.name}
+						light={window.localStorage.getItem('lightID')}
+						color="yellow"
 					/>
 
 					{this.state.light.state.on === true ? (
@@ -253,7 +229,7 @@ export default class Light extends Component {
 
 						) : (
 
-						<button className="turn-off btn btn-default" onClick={() => {
+						<button className="turn-on btn btn-default" onClick={() => {
 							return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
 								"on": true
 							}).then((response) => {
