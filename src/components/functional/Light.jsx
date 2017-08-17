@@ -193,25 +193,25 @@ export default class Light extends Component {
 					<ColorPresetButton
 						name={light.name}
 						light={window.localStorage.getItem('lightID')}
-						color="red"
+						preset="red"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
 						light={window.localStorage.getItem('lightID')}
-						color="blue"
+						preset="blue"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
 						light={window.localStorage.getItem('lightID')}
-						color="green"
+						preset="green"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
 						light={window.localStorage.getItem('lightID')}
-						color="yellow"
+						preset="yellow"
 					/>
 
 					{this.state.light.state.on === true ? (

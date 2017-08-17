@@ -9,31 +9,31 @@ export default class ColorPresetButton extends Component {
     }
 
     render () {
-        let Color
+        let preset
 
-        switch(this.props.color) {
+        switch(this.props.preset) {
             case "red":
-                Color = 65280
+                preset = 65280
                 break;
             case "green":
-                Color = 25500
+                preset = 25500
                 break;
             case "blue":
-                Color = 46920
+                preset = 46920
                 break;
             case "yellow":
-                Color = 12750
+                preset = 12750
                 break;
         }
 
-            return ( <button className={"preset-" + this.props.color + " btn"} onClick={() => {
+            return ( <button className={"preset-" + this.props.preset + " btn"} onClick={() => {
                 Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + this.props.light + '/state', {
-                    "hue": Color
+                    "hue": preset
                 }).then((response) => {
                     return notifyWith("Color Changed", {
-                        body: "Color changed to " + this.props.color
+                        body: "Color changed to " + this.props.preset
                     })
                 })
-            }}>{this.props.color}</button> )
+            }}>{this.props.preset}</button> )
     }
 }
