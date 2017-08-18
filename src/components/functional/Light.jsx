@@ -186,31 +186,31 @@ export default class Light extends Component {
 				<h4 className="light-single__model_id">ModelID: {light.modelid}</h4>
 				<h4 className="light-single__type">Type: {light.type}</h4>
 				<h4 className="light-single__state-on">{state.on === true ? <div className="label label-success">light is on</div> : <div className="label label-danger">light is off</div>}</h4>
-
+					
 				<hr/>
 				<div className="row color-presets">
 					<h3>Color Presets</h3>
 					<ColorPresetButton
 						name={light.name}
-						light={window.localStorage.getItem('lightID')}
+						light={this.storage.getItem('lightID')}
 						preset="red"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={window.localStorage.getItem('lightID')}
+						light={this.storage.getItem('lightID')}
 						preset="blue"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={window.localStorage.getItem('lightID')}
+						light={this.storage.getItem('lightID')}
 						preset="green"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={window.localStorage.getItem('lightID')}
+						light={this.storage.getItem('lightID')}
 						preset="yellow"
 					/>
 
