@@ -26,7 +26,7 @@
 /* each preset */
 .light-single .color-presets .preset > .preset-red,
 .light-single .color-presets .preset > .preset-blue,
-.light-single .color-presets .preset > .preset-green,
+.light-single .color-presets .preset > .preset-green, 
 .light-single .color-presets .preset > .preset-yellow, 
 .light-single .color-presets .preset > .preset-lightblue,
 .light-single .color-presets .preset > .preset-lightgreen { border:none; border-radius: 5px 5px 5px 5px; padding: 3rem; margin-left: 3px; margin-top: 10px; color: #fff; }
