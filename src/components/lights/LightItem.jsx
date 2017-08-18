@@ -14,10 +14,6 @@ export default class LightItem extends Component {
 	 */
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			light: ''
-		}
 	}
 	
 	/**
