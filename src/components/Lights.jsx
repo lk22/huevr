@@ -54,7 +54,7 @@ export default class Lights extends Component {
 	getLights() {
 
 		// check if the authorization username exists
-		if(window.localStorage.getItem('username')) {
+		if(Storage.getItem('username')) {
 
 			// if so, fetch all the lights from API
 			fetchLights().then((response) => {
@@ -104,7 +104,7 @@ export default class Lights extends Component {
 	/**
 	 * Rendering the lights list component
 	 * @return {[type]} [description]
-	 */
+	 */ 
 	render() {
 		const username = Storage.username
 		return (
