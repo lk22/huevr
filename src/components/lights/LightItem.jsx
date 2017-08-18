@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {Link, Router, Route} from 'react-router-dom'
 
-import {log} from './../globals.js'
+import {log} from './../../globals.js'
 
 /**
  * Light Item component 
