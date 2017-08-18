@@ -31,8 +31,6 @@ export default class Light extends Component {
 	constructor(props) {
 		super(props);
 
-		this.storage = Storage
-
 		// setup initial state
 		this.state = {
 
@@ -159,13 +157,13 @@ export default class Light extends Component {
 	}
 
 	updateRed(e) {
-		log([this.storage])
+		log([Storage])
 
 
 	}
 
 	updateBlue(e) {
-		log([this.storage])
+		log([Storage])
 	}
 
 	/**
@@ -191,37 +189,37 @@ export default class Light extends Component {
 					<h3>Color Presets</h3>
 					<ColorPresetButton
 						name={light.name}
-						light={this.storage.getItem('lightID')}
+						light={Storage.getItem('lightID')}
 						preset="red"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={this.storage.getItem('lightID')}
+						light={Storage.getItem('lightID')}
 						preset="blue"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={this.storage.getItem('lightID')}
+						light={Storage.getItem('lightID')}
 						preset="green"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={this.storage.getItem('lightID')}
+						light={Storage.getItem('lightID')}
 						preset="yellow"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={this.storage.getItem('lightID')}
+						light={Storage.getItem('lightID')}
 						preset="lightblue"
 					/>
 
 					<ColorPresetButton
 						name={light.name}
-						light={this.storage.getItem('lightID')}
+						light={Storage.getItem('lightID')}
 						preset="lightgreen"
 					/>
 
