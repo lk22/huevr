@@ -25,7 +25,6 @@ export default class LightItem extends Component {
 	componentDidMount() {
 		if(process.env.NODE_ENV === "development")
 			log(["Light item " + this.props.data.id + " is rendered"])
-		log(["test"])
 	}
 
 	/**
