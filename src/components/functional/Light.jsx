@@ -6,7 +6,7 @@ import {Link, Router, Route} from 'react-router-dom'
 /**
  * globals
  */
-import {fetchLight, updateLight, log, notifyWith} from './../../globals.js'
+import {fetchLight, updateLight, log, notifyWith, Storage} from './../../globals.js'
 
 // stateless components
 import Sidebar from './../stateless/Sidebar.jsx'
@@ -31,7 +31,7 @@ export default class Light extends Component {
 	constructor(props) {
 		super(props);
 
-		this.storage = window.localStorage
+		this.storage = Storage
 
 		// setup initial state
 		this.state = {
@@ -65,11 +65,11 @@ export default class Light extends Component {
 
 		// store the id of the light bulb
 
-			window.localStorage.setItem('lightID', this.props.match.params.id)
+			Storage.setItem('lightID', this.props.match.params.id)
 
 		// then grab the stored id
 
-			const id = window.localStorage.getItem('lightID')
+			const id = Storage.getItem('lightID')
 
 		// fetch the light with stored id
 
@@ -83,7 +83,7 @@ export default class Light extends Component {
 	componentWillUnmount() {
 
 		// remove the stored id of the light bulb
-		window.localStorage.removeItem('lightID')
+		Storage.removeItem('lightID')
 	}
 
 	/**
@@ -94,8 +94,8 @@ export default class Light extends Component {
 	fetchLight(light) {
 
 		// save the
-		// const ip = window.localStorage.getItem('ipaddress')
-		// // const username = window.localStorage.getItem('username')
+		// const ip = Storage.getItem('ipaddress')
+		// // const username = Storage.getItem('username')
 
 		// fetch light bulb information from api
 		fetchLight(light).then((response) => {
@@ -145,8 +145,8 @@ export default class Light extends Component {
 		this.state.light.bri = e.target.value
 		log(['Brightness state:  ' + this.state.light.bri, this.state.light])
 
-		// updateLight(window.localStorage.getItem('lightID'), 'brightness', e.target.value)
-		return updateLight(window.localStorage.getItem('lightID'), 'brightness', this.state.light.bri)
+		// updateLight(Storage.getItem('lightID'), 'brightness', e.target.value)
+		return updateLight(Storage.getItem('lightID'), 'brightness', this.state.light.bri)
 
 	}
 
@@ -232,7 +232,7 @@ export default class Light extends Component {
 
 						{this.state.light.state.on === true ? (
 							<button className="turn-off btn btn-default" onClick={() => {
-								return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+								return Axios.put('http://' + Storage.getItem('ipaddress') + '/api/' + Storage.getItem('username') + '/lights/' + Storage.getItem('lightID') + '/state', {
 									"on": false
 								}).then((response) => {
 
@@ -246,7 +246,7 @@ export default class Light extends Component {
 							) : (
 
 							<button className="turn-on btn btn-default" onClick={() => {
-								return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+								return Axios.put('http://' + Storage.getItem('ipaddress') + '/api/' + Storage.getItem('username') + '/lights/' + Storage.getItem('lightID') + '/state', {
 									"on": true
 								}).then((response) => {
 
