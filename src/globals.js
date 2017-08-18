@@ -5,7 +5,7 @@ const Notify = require('node-notifier')
 
 // local storage wrapper
 export const Storage = window.localStorage
-const storage = window.localStorage
+const storage = window.localStorage 
 
 	/**
 	 * wrapper around console.log
