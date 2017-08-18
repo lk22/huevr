@@ -214,6 +214,18 @@ export default class Light extends Component {
 						preset="yellow"
 					/>
 
+					<ColorPresetButton
+						name={light.name}
+						light={this.storage.getItem('lightID')}
+						preset="lightblue"
+					/>
+
+					<ColorPresetButton
+						name={light.name}
+						light={this.storage.getItem('lightID')}
+						preset="lightgreen"
+					/>
+
 					{this.state.light.state.on === true ? (
 						<button className="turn-off btn btn-default" onClick={() => {
 							return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {

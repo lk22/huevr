@@ -24,6 +24,12 @@ export default class ColorPresetButton extends Component {
             case "yellow":
                 preset = 12750
                 break;
+            case "lightblue":
+                preset = 35920
+                break;
+            case "lightgreen":
+                preset = 30920
+                break;
         }
 
             return ( <button className={"preset-" + this.props.preset + " btn"} onClick={() => {

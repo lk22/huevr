@@ -23,11 +23,21 @@
 /* color presets wrapper */
 .light-single > .color-presets{ padding: 1.5rem;  }
 
+.light-single .color-presets > .preset-red,
+.light-single .color-presets > .preset-blue,
+.light-single .color-presets > .preset-green,
+.light-single .color-presets > .preset-yellow, 
+.light-single .color-presets > .preset-lightblue,
+.light-single .color-presets > .preset-lightgreen { border:none; border-radius: 5px 5px 5px 5px; padding: 3rem; margin-left: 3rem; margin-top: 10px; color: #fff; }
+
 /* color preset buttons */
-.light-single .color-presets > .preset-red {background: #e74c3c;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color:#fff;}
-.light-single .color-presets > .preset-blue {background: #3498db;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color: #fff;}
-.light-single .color-presets > .preset-green {background: #2ecc71;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color: #fff;}
-.light-single .color-presets > .preset-yellow {background: #f1c40f;  border: none; border-radius: 5px 5px 5px 5px; padding:3rem; margin-left: 3rem; margin-top: 10px; color: #fff;}
+.light-single .color-presets > .preset-red {background: #e74c3c;}
+.light-single .color-presets > .preset-blue {background: #3498db; }
+.light-single .color-presets > .preset-green {background: #2ecc71; }
+.light-single .color-presets > .preset-yellow {background: #f1c40f; }
+.light-single .color-presets > .preset-lightblue{background: #1abc9c;}
+.light-single .color-presets > .preset-lightgreen{background: #9CCC65;}
+
 
 /* light switch button */
 .light-single .color-presets > .turn-on{color: #fff; display:block; background: #000; padding: 2.5rem; margin-left: 3rem; margin-top: 10px; }
