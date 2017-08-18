@@ -32,14 +32,18 @@ export default class ColorPresetButton extends Component {
                 break;
         }
 
-            return ( <button className={"preset-" + this.props.preset + " btn"} onClick={() => {
-                Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + this.props.light + '/state', {
-                    "hue": preset
-                }).then((response) => {
-                    return notifyWith("Color Changed", {
-                        body: "Color changed to " + this.props.preset
-                    })
-                })
-            }}>{this.props.preset}</button> )
+            return ( 
+                    <div className="col-md-2 preset">
+                        <button className={"preset-" + this.props.preset + " btn"} onClick={() => {
+                            Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + this.props.light + '/state', {
+                                "hue": preset
+                            }).then((response) => {
+                                return notifyWith("Color Changed", {
+                                    body: "Color changed to " + this.props.preset
+                                })
+                            })
+                        }}>{this.props.preset}</button> 
+                    </div>
+            )
     }
 }

@@ -169,6 +169,10 @@ export default class Light extends Component {
 		log([this.storage])
 	}
 
+	getColorPresets(){
+
+	}
+
 	/**
 	 * render the light with requested data
 	 * @return {[type]} [description]
@@ -226,35 +230,40 @@ export default class Light extends Component {
 						preset="lightgreen"
 					/>
 
-					{this.state.light.state.on === true ? (
-						<button className="turn-off btn btn-default" onClick={() => {
-							return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-								"on": false
-							}).then((response) => {
 
-								window.location.reload()
-								return notifyWith(light.name, {
-									body: "Is now turned off."
-								})
-							})
-						}}>Turn off</button>
-
-						) : (
-
-						<button className="turn-on btn btn-default" onClick={() => {
-							return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
-								"on": true
-							}).then((response) => {
-
-								window.location.reload()
-								return notifyWith(light.name, {
-									body: "Is now turned on."
-								})
-							})
-						}}>Turn on</button>
-
-						)}
 				</div>
+				<div className="row light-switch">
+				<h3>Light switch</h3>
+
+						{this.state.light.state.on === true ? (
+							<button className="turn-off btn btn-default" onClick={() => {
+								return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+									"on": false
+								}).then((response) => {
+
+									window.location.reload()
+									return notifyWith(light.name, {
+										body: "Is now turned off."
+									})
+								})
+							}}>Turn off</button>
+
+							) : (
+
+							<button className="turn-on btn btn-default" onClick={() => {
+								return Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + window.localStorage.getItem('lightID') + '/state', {
+									"on": true
+								}).then((response) => {
+
+									window.location.reload()
+									return notifyWith(light.name, {
+										body: "Is now turned on."
+									})
+								})
+							}}>Turn on</button>
+
+							)}
+						</div>
 			</div>
 		)
 	}
