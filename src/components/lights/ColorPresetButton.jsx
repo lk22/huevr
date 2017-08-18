@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 
-import {log, notifyWith} from './../../globals.js'
+import {log, notifyWith, Storage} from './../../globals.js'
 
 export default class ColorPresetButton extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ export default class ColorPresetButton extends Component {
             return ( 
                     <div className="col-md-2 preset">
                         <button className={"preset-" + this.props.preset + " btn"} onClick={() => {
-                            Axios.put('http://' + window.localStorage.getItem('ipaddress') + '/api/' + window.localStorage.getItem('username') + '/lights/' + this.props.light + '/state', {
+                            Axios.put('http://' + Storage.getItem('ipaddress') + '/api/' + Storage.getItem('username') + '/lights/' + this.props.light + '/state', {
                                 "hue": preset
                             }).then((response) => {
                                 return notifyWith("Color Changed", {
