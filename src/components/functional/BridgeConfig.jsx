@@ -18,7 +18,7 @@ import {log, fetchBridgeConfig, Storage} from './../../globals.js'
 export default class BridgeConfig extends Component {
 	constructor(props) {
 		super(props);
-		
+		 
 		if(Storage.getItem('username')) {
 			fetchBridgeConfig().then((response) => {
 				log([
