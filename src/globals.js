@@ -17,7 +17,7 @@ const storage = window.localStorage
 			logs.forEach((log) => {
 				console.log(log)
 			})
-		}
+		} 
 
 	/**
 	 * get every item in local storage
