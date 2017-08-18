@@ -2,6 +2,8 @@
 import React, {Component} from 'react'
 import {Link, Router, Route} from 'react-router-dom'
 
+import {log} from './../globals.js'
+
 /**
  * Light Item component 
  */
@@ -21,7 +23,8 @@ export default class LightItem extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		console.log("Light item " + this.props.data.id + " is rendered")
+		if(process.env.NODE_ENV === "development")
+			log(["Light item " + this.props.data.id + " is rendered"])
 	}
 
 	/**
@@ -30,7 +33,11 @@ export default class LightItem extends Component {
 	 */
 	render() {
 		const props = this.props
-		console.log(props)
+
+		if(process.env.NODE_ENV === "development"){
+			log([props])
+		}
+		
 		return(
 			<div className="row light">
 				<h4 className="light-name"><Link to={"/" + props.data.id}>{props.data.name}</Link></h4>
