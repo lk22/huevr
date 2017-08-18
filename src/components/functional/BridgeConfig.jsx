@@ -13,13 +13,13 @@ import NotFoundComponent from './../stateless/NotFoundComponent.jsx'
 /**
  * Globals
  */
-import {log, fetchBridgeConfig} from './../../globals.js'
+import {log, fetchBridgeConfig, Storage} from './../../globals.js'
 
 export default class BridgeConfig extends Component {
 	constructor(props) {
 		super(props);
 		
-		if(window.localStorage.getItem('username')) {
+		if(Storage.getItem('username')) {
 			fetchBridgeConfig().then((response) => {
 				log([
 					response.data[0] // the data response object
@@ -33,7 +33,7 @@ export default class BridgeConfig extends Component {
 	}
 
 	render() {
-		const username = window.localStorage.getItem('username')
+		const username = Storage.getItem('username')
 		return (
 			<div className="BridgeConfigWrapper">
 				<Header />

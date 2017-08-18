@@ -4,7 +4,7 @@ const {dialog} = require('electron').remote
 const Notify = require('node-notifier')
 
 // local storage wrapper
-const storage = window.localStorage
+export const Storage = window.localStorage
 
 	/**
 	 * wrapper around console.log
