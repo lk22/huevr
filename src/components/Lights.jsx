@@ -6,7 +6,7 @@ import Axios from 'axios'
 /**
  * globals
  */
-import {fetchLights, log} from './../globals.js'
+import {fetchLights, log, Storage} from './../globals.js'
 
 // stateless component
 import Sidebar from './stateless/Sidebar.jsx'
@@ -106,7 +106,7 @@ export default class Lights extends Component {
 	 * @return {[type]} [description]
 	 */
 	render() {
-		const username = window.localStorage.username
+		const username = Storage.username
 		return (
 			<div className="lightsWrapper">
 				<div className="content container-fluid">
