@@ -162,7 +162,6 @@ const storage = window.localStorage
 	 */
 
 		export const fetchBridge = () => {
-
 			// create GET request to www.meethue.com/api/nupnp to fetch information about bridge
 			return makeRequest('GET', 'https://www.meethue.com/api/nupnp')
 		}

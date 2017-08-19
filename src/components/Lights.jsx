@@ -112,7 +112,12 @@ export default class Lights extends Component {
 				<div className="content container-fluid">
 					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">
-						{username ? <h2 className="text-left">Lights Configuration</h2> : ''}
+						{username ? (
+							<div className="title-section">
+								<h2 className="text-left">Lights</h2>
+								<button className="btn btn-primary pull-right">Search <span className="glyphicon glyphicon-search"></span></button>
+							</div>
+						) : ''}
 						<hr/>
 						{username ? <div className="container lights-list">{this.list()}</div> : <NotFoundComponent component="lights"/> }
 					</div>
