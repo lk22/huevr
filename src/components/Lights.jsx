@@ -14,6 +14,7 @@ import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
 // functional components
 import LightItem from './lights/LightItem.jsx'
+import SearchLightsButton from './lights/SearchLightsButton.jsx'
 
 /**
  * Lights list component
@@ -115,7 +116,7 @@ export default class Lights extends Component {
 						{username ? (
 							<div className="title-section">
 								<h2 className="text-left">Lights</h2>
-								<button className="btn btn-primary pull-right">Search <span className="glyphicon glyphicon-search"></span></button>
+								<SearchLightsButton />
 							</div>
 						) : ''}
 						<hr/>

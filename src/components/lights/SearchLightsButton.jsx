@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // globals
-import {log} from 'globals.js'
+import {log} from './../../globals.js'
 
 export default class  extends Component {
   
@@ -27,7 +27,9 @@ export default class  extends Component {
      */
     render() {
         return (
-          <div></div>
+          <div className="SearchContainer" style={{display: "inline"}}>
+          		<button className="btn btn-primary pull-right">Search <span className="glyphicon glyphicon-search"></span></button>
+          </div>
         )
     }
 }
