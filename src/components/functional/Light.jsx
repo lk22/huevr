@@ -185,6 +185,12 @@ export default class Light extends Component {
 				<h4 className="light-single__state-on">{state.on === true ? <div className="label label-success">light is on</div> : <div className="label label-danger">light is off</div>}</h4>
 					
 				<hr/>
+
+				<div className="row brightness">
+					<h3>Brightness</h3>
+					<ColorSlider brightness={light.bri} />
+				</div>
+
 				<div className="row color-presets">
 					<h3>Color Presets</h3>
 					<ColorPresetButton
@@ -222,7 +228,6 @@ export default class Light extends Component {
 						light={Storage.getItem('lightID')}
 						preset="lightgreen"
 					/>
-
 
 				</div>
 				<div className="row light-switch">

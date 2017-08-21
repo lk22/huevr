@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import Axios from 'axios'
 
-import {log, updateBrightness} from './../../../globals.js'
+import {log, updateBrightness, Storage} from './../../../globals.js'
 
 export default class ColorSlider extends Component {
 
@@ -15,7 +16,11 @@ export default class ColorSlider extends Component {
 
 	changeBrightness(e) {
 		const value = e.target.value
-		updateBrightness(value)
+		log([value])
+
+		Axios.put('http://' + Storage.getItem('ipaddress') + '/api/' + Storage.getItem('username') + '/lights/' + Storage.getItem('lightID') + '/state', JSON.stringify({
+			"bri": JSON.parse(e.target.value)
+		}))
 	}
 
 	render() {
@@ -25,16 +30,6 @@ export default class ColorSlider extends Component {
 					<div className="form-group">
 						<label htmlFor="brightness">Brightness</label>
 						<input type="range" onChange={this.changeBrightness} min="1" max="255" value={this.props.brightness}/>
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="contrast">Contrast</label>
-						<input type="range" onChange={this.changeContrast} min="1" max="255" value={this.props.contrast}/>
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="hue">Hue</label>
-						<input type="range" onChange={this.changeHue} min="1" max="65554" value={this.props.hue}/>
 					</div>
 				</form>
 			</div>

@@ -28,7 +28,9 @@ export default class  extends Component {
     render() {
         return (
           <div className="SearchContainer" style={{display: "inline"}}>
-          		<button className="btn btn-primary pull-right">Search <span className="glyphicon glyphicon-search"></span></button>
+          		<button className="btn btn-primary pull-right" onClick={() => {
+					
+          		}}>Search <span className="glyphicon glyphicon-search"></span></button>
           </div>
         )
     }

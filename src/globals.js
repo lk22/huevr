@@ -280,3 +280,7 @@ const storage = window.localStorage
 					break;
 			}
 		}
+
+		export const searchForNewLights = () => {
+			return makeRequest('')
+		}
