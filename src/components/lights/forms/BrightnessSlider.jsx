@@ -20,7 +20,6 @@ export default class BrightnessSlider extends Component {
 		updateBrightness(Storage.getItem('lightID'), value)
 	}
 
-
 	render() {
 		return(
 					<div className="form-group">
