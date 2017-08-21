@@ -187,7 +187,7 @@ export default class Light extends Component {
 				<hr/>
 
 				<div className="row brightness">
-					<h3>Brightness</h3>
+					<h3>Light Settings</h3>
 					<LightConfigForm 
 						brightness={light.bri}
 						contrast={light.ct}
