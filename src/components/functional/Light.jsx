@@ -18,7 +18,7 @@ import ColorPresetButton from './../lights/ColorPresetButton.jsx'
 /**
  * form components
  */
-import ColorSlider from './../lights/forms/ColorSlider.jsx'
+import LightConfigForm from './../lights/forms/LightConfigForm.jsx'
 
 // Single light component
 export default class Light extends Component {
@@ -188,7 +188,11 @@ export default class Light extends Component {
 
 				<div className="row brightness">
 					<h3>Brightness</h3>
-					<ColorSlider brightness={light.bri} />
+					<LightConfigForm 
+						brightness={light.bri}
+						contrast={light.ct}
+						hue={light.hue}
+					/>
 				</div>
 
 				<div className="row color-presets">

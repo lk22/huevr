@@ -226,9 +226,9 @@ const storage = window.localStorage
 	 */
 
 		export const updateBrightness = (light, bri) => {
-			return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', {
-				"bri": bri
-			})
+			return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', JSON.stringify({
+				"bri": JSON.parse(bri)
+			}))
 		}
 
 	/**
@@ -239,9 +239,9 @@ const storage = window.localStorage
 	 */
 
 		export const updateContrast = (light, ct) => {
-			return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', {
-				"ct": ct
-			})
+			return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', JSON.stringify({
+				"ct": JSON.parse(ct)
+			}))
 		}
 
 	/**
@@ -252,9 +252,9 @@ const storage = window.localStorage
 	 */
 
 		export const updateHue = (light, hue) => {
-			return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', {
-				"hue": hue
-			})
+			return makeRequest('PUT', 'http://' + storage.getItem('ipaddress') + '/api/' + storage.getItem('username') + '/lights/' + light + '/state', JSON.stringify({
+				"hue": JSON.parse(hue)
+			}))
 		}
 
 	/**
