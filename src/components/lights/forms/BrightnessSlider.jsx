@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 import {log, updateBrightness, Storage} from './../../../globals.js'
 
-export default class ColorSlider extends Component {
+export default class BrightnessSlider extends Component {
 
 	constructor(props) {
 		super(props);
@@ -17,9 +17,7 @@ export default class ColorSlider extends Component {
 	changeBrightness(e) {
 		const value = e.target.value
 
-		Axios.put('http://' + Storage.getItem('ipaddress') + '/api/' + Storage.getItem('username') + '/lights/' + Storage.getItem('lightID') + '/state', JSON.stringify({
-			"bri": JSON.parse(e.target.value)
-		}))
+		updateBrightness(Storage.getItem('lightID'), value)
 	}
 
 

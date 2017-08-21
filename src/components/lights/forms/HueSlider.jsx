@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 
-import {log, updateBrightness, Storage} from './../../../globals.js'
+import {log, updateHue, Storage} from './../../../globals.js'
 
-export default class ColorSlider extends Component {
+export default class HueSlider extends Component {
 
 	constructor(props) {
 		super(props);
@@ -14,12 +14,10 @@ export default class ColorSlider extends Component {
 		console.log(this.state)
 	}
 
-	changeBrightness(e) {
+	changeHue(e) {
 		const value = e.target.value
 
-		Axios.put('http://' + Storage.getItem('ipaddress') + '/api/' + Storage.getItem('username') + '/lights/' + Storage.getItem('lightID') + '/state', JSON.stringify({
-			"hue": JSON.parse(e.target.value)
-		}))
+		updateHue(Storage.getItem('lightID'), value)
 	}
 
 	
@@ -28,7 +26,7 @@ export default class ColorSlider extends Component {
 
 			<div className="form-group">
 				<label htmlFor="brightness">Hue</label>
-				<input type="range" onChange={this.changeBrightness} min="1" max="65550" value={this.props.hue}/>
+				<input type="range" onChange={this.changeHue} min="1" max="65550" value={this.props.hue}/>
 			</div>
 		)
 	}
