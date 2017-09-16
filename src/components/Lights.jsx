@@ -111,7 +111,7 @@ export default class Lights extends Component {
 		return (
 			<div className="lightsWrapper">
 				<div className="content container-fluid">
-					<div className="col-md-9 col-lg-9 pull-right main-content">
+					<div className="col-md-12 col-lg-12 pull-right main-content">
 						{username ? (
 							<div className="title-section">
 								<h2 className="text-left">Lights</h2>
