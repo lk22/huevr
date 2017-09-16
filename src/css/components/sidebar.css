@@ -1,7 +1,7 @@
-.Sidebar{ /*height: 740px;*/ font-family: var(--font); padding:0rem; left: 0px; top:70px; background: #fff; padding:2rem; margin-top:1rem; }
+.Nav{ /*height: 740px;*/ font-family: var(--font); padding:0rem; left: 0px; top:70px; background: #fff; padding:2rem; margin-top:1rem; }
 
-.Sidebar > .nav-list{ padding-left:1.5rem; }
+.Nav > .nav-list{ padding-left:1.5rem; }
 
-.Sidebar .nav-list > .list-item { list-style-type: var(--style-type); padding:0rem; margin-top:1rem; }
+.Nav .nav-list > .list-item { list-style-type: var(--style-type); padding:0rem; margin-top:1rem; }
 
-.Sidebar .nav-list .list-item > a{; color: var(--color);; font-size:13px; }
+.Nav .nav-list .list-item > a{; color: var(--color); font-size:13px; }

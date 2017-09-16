@@ -7,7 +7,7 @@ import React, {Component} from 'react'
  * Stateless components
  */
 import Header from './../stateless/Header.jsx'
-import Sidebar from './../stateless/Sidebar.jsx'
+import Navigation from './../stateless/Navigation.jsx'
 import NotFoundComponent from './../stateless/NotFoundComponent.jsx'
 
 /**

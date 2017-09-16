@@ -9,7 +9,7 @@ import {Link, Router, Route} from 'react-router-dom'
 import {fetchLight, updateLight, log, notifyWith, Storage} from './../../globals.js'
 
 // stateless components
-import Sidebar from './../stateless/Sidebar.jsx'
+import Navigation from './../stateless/Navigation.jsx'
 
 // functional Components
 import LightItem from './../lights/LightItem.jsx'

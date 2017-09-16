@@ -18,7 +18,7 @@ import {
 } from './../globals.js'
 
 // stateless components
-import Sidebar from './stateless/Sidebar.jsx'
+import Navigation from './stateless/Navigation.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
 // functional components
@@ -117,13 +117,16 @@ export default class Main extends Component {
 		return (
 			<div className="mainWrapper">
 
+				<div className="container-fluid mainWrapper__container">
+					<Navigation />
+				</div>
+
 					<div className="content container-fluid">
-						<Sidebar />
+						
 						<div className="col-md-9 col-lg-9 pull-right main-content">
 							{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
 	 					</div>
 					</div>
-				
 				
 			</div>
 		)
