@@ -91,6 +91,7 @@ export default class Main extends Component {
 		log([
 			"App is mounted"
 		])
+		let time = 0
 	}
 
 	/**
@@ -120,9 +121,6 @@ export default class Main extends Component {
 				<div className="container-fluid mainWrapper__container">
 					<Navigation />
 				</div>
-
-					
-				
 			</div>
 		)
 	}
