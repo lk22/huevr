@@ -121,14 +121,16 @@ export default class Main extends Component {
 					<Navigation />
 				</div>
 
-					<div className="content container-fluid">
-						
-						<div className="col-md-9 col-lg-9 pull-right main-content">
-							{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
-	 					</div>
-					</div>
+					
 				
 			</div>
 		)
 	}
 }
+
+// <div className="content container-fluid">
+						
+// 	<div className="col-md-9 col-lg-9 pull-right main-content">
+// 		{ip && id ? <Bridge ip={ip} id={id} /> : this.showLoading()} 
+// 		</div>
+// </div>
