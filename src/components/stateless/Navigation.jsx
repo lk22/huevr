@@ -20,15 +20,15 @@ export default class Navigation extends Component {
 							<div className="link-icon center-block">
 								<span className="glyphicon glyphicon-flash"></span>
 							</div>
-							<h2 className="text-center">Lights</h2>
+							<h3 className="text-center">Lights</h3>
 						</Link>
 					</li>
 					<li className="list-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
 						<Link to="/lightgroups">
 							<div className="link-icon center-block">
-									<span className="glyphicon glyphicon-flash"></span>
+									<span className="glyphicon glyphicon-wrench"></span>
 								</div>
-							<h2 className="text-center">Light groups</h2>
+							<h3 className="text-center">Light groups</h3>
 						</Link>
 					</li>
 					{/*<li className="list-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -42,7 +42,7 @@ export default class Navigation extends Component {
 							<div className="link-icon center-block">
 								<span className="glyphicon glyphicon-home"></span>
 							</div>
-							<h2 className="text-center">Home</h2>
+							<h3 className="text-center">Home</h3>
 						</Link>
 					</li>
 				</ul>

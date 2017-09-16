@@ -116,7 +116,7 @@ export default class Lights extends Component {
 							<div className="title-section">
 								<h2 className="text-left">Lights</h2>
 								<SearchLightsButton />
-
+								<Link to="/" className="btn btn-primary pull-right"><span className="glyphicon glyphicon-home"></span> Home</Link>
 							</div>
 						) : ''}
 						<hr/>

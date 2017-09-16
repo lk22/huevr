@@ -278,7 +278,6 @@ export default class Light extends Component {
 		return(
 			<div className="lightWrapper">
 				<div className="content container-fluid">
-					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						<h2 className="text-center">{this.state.light.name}</h2>
 						<hr/>

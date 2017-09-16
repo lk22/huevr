@@ -21,7 +21,7 @@
  	padding-top: 5rem;
  	padding-bottom: 5rem;
 
- 	background: #fff;
+ 	background: #34495e;
  	border: 1.5px solid #fff;
 }
 
@@ -42,11 +42,11 @@
 	font-size: 100px;
 	left: 40%;
  	right: 40%;
- 	color: #3498db;
+ 	color: #e74c3c;
 }
 
 .home_navigation .nav-list .list-item .link-icon > .glyphicon:hover {
- 	color: #2ecc71;
+ 	color: #e74c3c;
  	transition: ease-in-out 0.2s all;
 }
 
@@ -58,4 +58,5 @@
 	color: var(--color);
 	font-size:13px; 
 	text-decoration:none;
+	color: #fff;
 }
