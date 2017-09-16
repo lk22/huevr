@@ -13,7 +13,7 @@
 .light > .light-model_id{ font-size:15px; padding: 1.2rem;}
 
 /* single light */
-.light-single{ transition:ease-in-out 0.2s all; color: #000; background: #F6F7F9; min-height: 150px; padding:5rem; width:79% }
+.light-single{ transition:ease-in-out 0.2s all; color: #000; background: #F6F7F9; min-height: 150px; padding:5rem; width:100% }
 .light-single > .light-single__name{ background: #fff; height:60px; padding:2.2rem; text-transform: uppercase; color:#000;}
 .light-single > .light-single__manufacturer,
 .light-single > .light-single__model_id,

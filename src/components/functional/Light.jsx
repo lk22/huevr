@@ -279,7 +279,7 @@ export default class Light extends Component {
 			<div className="lightWrapper">
 				
 				<div className="content container-fluid">
-					<div className="col-md-9 col-lg-9 pull-right main-content">
+					<div className="col-md-12 col-lg-12 pull-right main-content">
 					<Link to="/lights" className="btn btn-primary">
 						<span className="glyphicon glyphicon-home"></span> Go back
 					</Link>
