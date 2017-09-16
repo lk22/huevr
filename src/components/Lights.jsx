@@ -9,7 +9,7 @@ import Axios from 'axios'
 import {fetchLights, log, Storage} from './../globals.js'
 
 // stateless component
-import Sidebar from './stateless/Sidebar.jsx'
+import Navigation from './stateless/Navigation.jsx'
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
 
 // functional components
@@ -111,12 +111,12 @@ export default class Lights extends Component {
 		return (
 			<div className="lightsWrapper">
 				<div className="content container-fluid">
-					<Sidebar />
 					<div className="col-md-9 col-lg-9 pull-right main-content">
 						{username ? (
 							<div className="title-section">
 								<h2 className="text-left">Lights</h2>
 								<SearchLightsButton />
+
 							</div>
 						) : ''}
 						<hr/>

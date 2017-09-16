@@ -13,13 +13,23 @@ export default class Navigation extends Component {
 	 */
 	render() {
 		return (
-			<div className="col-md-2 col-lg-2 pull-left nav">
+		    <div className="container-fluid home_navigation">
 				<ul className="nav-list">
 					<li className="list-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<Link to="/lights">Lights</Link>
+						<Link to="/lights">
+							<div className="link-icon center-block">
+								<span className="glyphicon glyphicon-flash"></span>
+							</div>
+							<h2 className="text-center">Lights</h2>
+						</Link>
 					</li>
 					<li className="list-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<Link to="/lightgroups">Light groups</Link>
+						<Link to="/lightgroups">
+							<div className="link-icon center-block">
+									<span className="glyphicon glyphicon-flash"></span>
+								</div>
+							<h2 className="text-center">Light groups</h2>
+						</Link>
 					</li>
 					{/*<li className="list-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
 						<Link to="/scenes">Scenes</Link>
@@ -28,7 +38,12 @@ export default class Navigation extends Component {
 						<Link to="/schedules">Schedules</Link>*/}
 					{/*</li>*/}
 					<li className="list-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<Link to="/">Home</Link>
+						<Link to="/">
+							<div className="link-icon center-block">
+								<span className="glyphicon glyphicon-home"></span>
+							</div>
+							<h2 className="text-center">Home</h2>
+						</Link>
 					</li>
 				</ul>
 			</div>
