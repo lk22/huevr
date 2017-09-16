@@ -3,6 +3,8 @@ const electron = require('electron')
 const {dialog} = require('electron').remote
 const Notify = require('node-notifier')
 
+export const env = process.env.NODE_ENV
+
 // local storage wrapper
 export const Storage = window.localStorage
 const storage = window.localStorage 

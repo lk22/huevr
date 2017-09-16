@@ -23,7 +23,7 @@ export default class LightItem extends Component {
 	 * @return {[type]} [description]
 	 */
 	componentDidMount() {
-		if(process.env.NODE_ENV === "development")
+		if(env === "development")
 			log(["Light item " + this.props.data.id + " is rendered"])
 	}
 
@@ -34,7 +34,7 @@ export default class LightItem extends Component {
 	render() {
 		const props = this.props
 
-		if(process.env.NODE_ENV === "development"){
+		if(env === "development"){
 			log([props])
 		}
 		
