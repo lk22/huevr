@@ -277,11 +277,12 @@ export default class Light extends Component {
 	render() {
 		return(
 			<div className="lightWrapper">
-				<Link to="/lights" className="btn btn-primary">
-					<span className="glyphicon glyphicon-home"></span> Go back
-				</Link>
+				
 				<div className="content container-fluid">
 					<div className="col-md-9 col-lg-9 pull-right main-content">
+					<Link to="/lights" className="btn btn-primary">
+						<span className="glyphicon glyphicon-home"></span> Go back
+					</Link>
 						<h2 className="text-center">{this.state.light.name}</h2>
 						<hr/>
 						<div className="container light-content">
