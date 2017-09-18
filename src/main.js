@@ -31,6 +31,7 @@
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
+                    <Route path="/lightgroups" components={LightGroups}/>
                     <Route path="/config" component={BridgeConfig}/>
                     <Route path="/lights" component={Lights}/>
                     <Route path="/:id" component={Light}/>
