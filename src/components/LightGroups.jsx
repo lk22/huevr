@@ -4,6 +4,7 @@ import {
 	log, 
 	fetchLightGroups,
 	notifyWith,
+	Storage
 } from './../globals.js'
 
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
@@ -28,5 +29,20 @@ export default class LightGroups extends Component {
 
 	componentDidMount() {
 		log(["LightGroups component mounted"])
+	}
+
+	getLightGroups() {
+
+		if(Storage.getItem('username')) {
+
+			fetchLightGroups().then((response) => {
+				const data = response.data
+
+				log([data])
+			})
+
+		}
+
+
 	}
 }
