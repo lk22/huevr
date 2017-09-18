@@ -203,6 +203,22 @@ const storage = window.localStorage
 		}
 
 	/**
+	 * get every light group bound on the 
+	 */
+	
+		export const fetchLightGroups = () => {
+
+			// get the ipaddress of the bridge
+			const ip = storage.getItem('ipaddress')
+
+			// get the username of the bridge
+			const username = storage.getItem('username')
+
+			// make call to light groups api
+			return makeRequest('GET', 'http://' + ip + '/api/' + username + '/groups') 
+		}
+
+	/**
 	 * fetch single light bulb
 	 * @param  {[type]} light [description]
 	 * @return {[type]}       [description]
