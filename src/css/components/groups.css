@@ -1,0 +1,28 @@
+.group{
+	background: #F6F7F9; 
+	min-height: 150px; 
+	font-size:15px;
+	padding: 1rem;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+.group > .group__class{
+	background: #fff;
+	height:60px;
+	padding:2.2rem; 
+	color: #000; 
+	text-transform: uppercase; 
+	font-size: 20px;
+}
+
+.group .group__class > a{
+	color: #000;
+	font-size:15px;
+}
+
+.group > .group__class,
+.group > .group__name,
+.group > .group__type {
+	font-size: 15px; padding: 1.2rem;
+}

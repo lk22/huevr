@@ -21,7 +21,8 @@ body {
 
 .mainWrapper .content > .main-content,
 .lightsWrapper .content > .main-content,
-.lightWrapper .content > .main-content{
+.lightWrapper .content > .main-content,
+.lightGroup__wrapper .content > .main-content{
 	min-height: 650px;
 	background: #fff;
 	border-radius: 2px 2px 2px 2px;

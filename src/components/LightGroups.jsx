@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
+import {Link} from 'react-router-dom'
 import {
 	log, 
 	fetchLightGroups,
@@ -92,7 +93,13 @@ export default class LightGroups extends Component {
 			<div className="lightGroup__wrapper">
 				<div className="content container-fluid">
 					<div className="col-md-12 col-lg-12 pull-right main-content">
-						{this.list()}
+					<div className="title-section">
+						<h2 className="text-left">Light groups</h2>
+						<Link to="/" className="btn btn-primary pull-right"><span className="glyphicon glyphicon-home"></span> Home</Link>
+					</div>
+						<div className="container group-list">
+							{this.list()}
+						</div>
 					</div>
 				</div>
 			</div>
