@@ -22,21 +22,19 @@
     import Lights from './components/Lights.jsx'
     import Light from './components/functional/Light.jsx'
     import BridgeConfig from './components/functional/BridgeConfig.jsx'
+    import LightGroups from './components/LightGroups.jsx'
 
 /**
  *  Defining routes 
  */
-
     ReactDOM.render(
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/lightgroups" components={LightGroups}/>
-                    <Route path="/config" component={BridgeConfig}/>
+                    <Route path="/lightgroups" component={LightGroups}/>
                     <Route path="/lights" component={Lights}/>
                     <Route path="/:id" component={Light}/>
                     <Route exact path="/" component={Main}/>
-                    
                 </Switch>
             </BrowserRouter>
         </Provider>,

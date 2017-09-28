@@ -27,12 +27,20 @@ export default class LightGroups extends Component {
 		}
 	}
 
+	/**
+	 * When the component is mounted
+	 * @return {[type]} [description]
+	 */
 	componentDidMount() {
 		log(["LightGroups component mounted"])
 
 		this.getLightGroups()
 	}
 
+	/**
+	 * get the light groups 
+	 * @return {[type]} [description]
+	 */
 	getLightGroups() {
 
 		// check if the authorization username exists
@@ -44,11 +52,52 @@ export default class LightGroups extends Component {
 				// define the light groups and convert data to array keys
 				const data = response.data
 
+				const lightGroups = Object.keys(data).map((id) => {
+					return Object.assign(data[id], {
+						id: parseInt(id, 10),
+					})
+				})
+
 				// log data
 				log([data])
+
+				this.setState({
+					lightGroups
+				})
 			})
 
 		}
 
+	}
+
+	list() {
+
+
+		return this.state.lightGroups.map((group, index) => {
+			return (
+			      <div className="row group">
+			      	<h4 className="group__class">{group.class}</h4>
+			      	<h4 className="group__name">{group.name}</h4>
+			      	<h4 className="group__type">{group.type}</h4>
+			      </div>
+			)
+		})
+	}
+
+	/**
+	 * render the component
+	 */
+	render() {
+
+		const username = Storage.username
+		return (
+			<div className="lightGroup__wrapper">
+				<div className="content container-fluid">
+					<div className="col-md-12 col-lg-12 pull-right main-content">
+						{this.list()}
+					</div>
+				</div>
+			</div>
+		)
 	}
 }
