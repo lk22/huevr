@@ -8,6 +8,7 @@ import {
 } from './../globals.js'
 
 import NotFoundComponent from './stateless/NotFoundComponent.jsx'
+import GroupItem from './groups/GroupItem.jsx'
 
 /**
  * LightGroups list component
@@ -71,15 +72,12 @@ export default class LightGroups extends Component {
 	}
 
 	list() {
-
-
 		return this.state.lightGroups.map((group, index) => {
 			return (
-			      <div className="row group">
-			      	<h4 className="group__class">{group.class}</h4>
-			      	<h4 className="group__name">{group.name}</h4>
-			      	<h4 className="group__type">{group.type}</h4>
-			      </div>
+			    <GroupItem 
+			      	key={index}
+			      	data={group}
+			    />
 			)
 		})
 	}
