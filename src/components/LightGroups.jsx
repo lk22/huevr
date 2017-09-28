@@ -29,20 +29,26 @@ export default class LightGroups extends Component {
 
 	componentDidMount() {
 		log(["LightGroups component mounted"])
+
+		this.getLightGroups()
 	}
 
 	getLightGroups() {
 
+		// check if the authorization username exists
 		if(Storage.getItem('username')) {
 
+			// if so fetch all the light groups from API
 			fetchLightGroups().then((response) => {
+
+				// define the light groups and convert data to array keys
 				const data = response.data
 
+				// log data
 				log([data])
 			})
 
 		}
-
 
 	}
 }

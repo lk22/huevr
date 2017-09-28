@@ -74,7 +74,6 @@ export default class Lights extends Component {
 					})
 				})
 
-
 				// add the lights to the state
 				this.setState({
 

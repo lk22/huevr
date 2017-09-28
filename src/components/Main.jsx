@@ -71,6 +71,8 @@ export default class Main extends Component {
 					authorize() // authorize user with new given username
 
 				} else {
+
+					 // welcome the user back
 					notifyWith('Welcome Back', {
 						body: 'Welcome back, good to see you again'
 					})
